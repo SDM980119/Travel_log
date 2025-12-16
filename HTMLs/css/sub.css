@@ -1,1 +1,122 @@
-/* sub page에서만 사용하는 스타일 */
+/* 회원가입 페이지 */
+.signup-page {display: flex;width: 100%;height: 100vh;}
+.signup-left {width: 48%;background-color: #ffffff;display: flex;flex-direction: column;align-items: center;justify-content: center;}
+.signup-profile {text-align: center; margin-bottom: 30px;}
+.signup-profile-circle {width: 90px; height: 90px; border-radius: 50%; border: 1px solid #949494; margin: 0 auto 10px;}
+.signup-profile-text {font-size: 12px; color: #949494;}
+.signup-form { width: 280px;}
+.signup-input {width: 100%; height: 40px; padding: 0 12px; margin-bottom: 12px; border: 1px solid #949494; border-radius: 7px; font-size: 14px;color: #949494; box-sizing: border-box;}
+.signup-submit-button {width: 100%; height: 48px; background-color: #081E5A; border: none; border-radius: 7px; color: #ffffff; font-size: 14px; margin-top: 10px; margin-bottom: 30px;}
+.signup-right {width: 52%; background-size: cover; background-position: center; overflow: hidden;}
+.signup-bg-img {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+
+/* 로그인 페이지 */
+.login-page {display: flex;width: 100%;height: 100vh;}
+.login-left {width: 52%; background-size: cover; background-position: center; overflow: hidden;}
+.login-right {width: 48%; background-color: #ffffff;display: flex; flex-direction: column; align-items: center; justify-content: center;}
+.login-bg-img {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}
+.login-form { width: 280px;}
+.login-logo {display: block; width: 200px; margin: 0 auto -30px}
+.login-message{display:block; width: 100%; text-align: center; font-size: 12px; color: #696969;} 
+.login-input:first-of-type {margin-top: 30px;}
+.login-input {width: 100%; height: 40px; padding: 0 12px; margin-bottom: 12px; border: 1px solid #949494; border-radius: 7px; font-size: 14px;color: #949494; box-sizing: border-box;}
+.login-submit-button {width: 100%; height: 48px; background-color: #081E5A; border: none; border-radius: 7px; color: #ffffff; font-size: 14px; margin-top: 10px; margin-bottom: 30px;}
+
+/* 마이페이지 */
+.mypage-profile {width: 100%; height: 250px; background-color: #6E95D0; display: flex; align-items: center;}
+.mypage-profile-img {width: 180px; height: 180px; border-radius: 50%; background-color: #ffffff; margin-right: 20px;}
+.mypage-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mypage-profile-badge {
+  background-color: #081E5A;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.mypage-profile-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* =========================
+   섹션 공통
+========================= */
+.mypage-section {
+  width: 100%;
+  padding: 30px 40px;
+}
+
+.mypage-section-title {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+/* =========================
+   카드 슬라이드
+========================= */
+.mypage-card-row {
+  display: flex;
+  gap: 16px;
+}
+
+.mypage-card {
+  width: 160px;
+  height: 200px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+}
+
+/* =========================
+   리스트 영역
+========================= */
+.mypage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mypage-list-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 16px;
+}
+
+.mypage-list-thumb {
+  width: 120px;
+  height: 80px;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  margin-right: 16px;
+}
+
+.mypage-list-info {
+  flex: 1;
+}
+
+.mypage-list-info h4 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.mypage-list-info p {
+  font-size: 12px;
+  color: #696969;
+}
+
+.mypage-list-btn {
+  height: 32px;
+  padding: 0 14px;
+  background-color: #081E5A;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 12px;
+}
