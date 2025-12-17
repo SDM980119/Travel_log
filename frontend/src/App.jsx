@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './reset.css';
 import './App.css';
 import './common.css';
-
 // import './sub.css';
 
 import { useEffect, useState } from "react";
@@ -58,6 +57,7 @@ function App() {
     {/* footer */}
     <Footer />
     {/* end footer */}
+    
   </div>
   );
 }

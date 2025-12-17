@@ -82,24 +82,16 @@ const Header = () => {
                                 ref={userRef}
                                 className={`header__util-hover ${openMenu === 'user' ? 'is-open' : ''}`}
                             >
-                            <img src="/images/common/icon_member.png" alt="" />
-                            </button>
-
-                            <ul className="header__util-list">
-                            <li>
-                                <Link to="/Login" onClick={closeUserMenu}>로그인</Link>
-                            </li>
-                            <li>
-                                <Link to="/SignUp" onClick={closeUserMenu}>회원가입</Link>
-                            </li>
-                            <li>
-                                <Link to="/MyPage" onClick={closeUserMenu}>마이페이지</Link>
-                            </li>
-                            <li>
-                                <Link to="/Logout" onClick={closeUserMenu}>로그아웃</Link>
-                            </li>
-                            </ul>
-                        </div>
+                                <button
+                                type="button"
+                                className="header__util mypage"
+                                aria-label="회원서비스"
+                                aria-haspopup="true"
+                                aria-expanded={openMenu === 'user'}
+                                onClick={() => toggleMenu('user')}
+                                >
+                                    <img src="/images/common/icon_member.png" alt="" />
+                                </button>
 
                                 <ul className="header__util-list">
                                     <li>

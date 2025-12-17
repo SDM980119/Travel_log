@@ -57,6 +57,9 @@ def check_duplicate():
     field = data.get('field')
     value = data.get('value')
 
+    if not field or not value:
+        return jsonify({'message' : '잘못된 요청'}), 400
+
     field_map = {
         'userid' : User.userid,
         'username' : User.username,
@@ -64,12 +67,10 @@ def check_duplicate():
         'phone' : User.phone,
     }
 
-    if not field or not value:
-        return jsonify({'messages' : "필수 값 누락"})
 
     if field not in field_map:
         return jsonify({'message' : '허용되지 않은 필드'})
 
     exists = User.query.filter(field_map[field] == value).first()
 
-    return jsonify({'available' : exists is None})
+    return jsonify({'available' : False if exists else True})
