@@ -33,13 +33,13 @@ const Home = () => {
                             </Link>  */}
                             <div className="place-inner">
                                 <Link to='/places' className='place-item'>
-                                    <img src="/images/temp/main_section02_temp_01.png" alt="" />
+                                    <img src="/images/temp/temp2.png" alt="" />
                                 </Link>
                                 <Link to='/places' className='place-item'>
-                                    <img src="/images/temp/main_section02_temp_02.png" alt="" />
+                                    <img src="/images/temp/temp.png" alt="" />
                                 </Link>
                                 <Link to='/places' className='place-item'>
-                                    <img src="/images/temp/main_section02_temp_03.png" alt="" />
+                                    <img src="/images/temp/main_section02_temp_03.png " alt="" />
                                 </Link>
                             </div>
                             <Link to='/places' className='btn-more type2'>
@@ -58,7 +58,24 @@ const Home = () => {
                         </div>
                         <div className='activity-wrap'>
                             <div className='activity-inner'>
-
+                                <Link to='/activities' className='activity-item'>
+                                    <img src="/images/temp/main_section03_temp_01.png" alt="" />
+                                </Link>
+                                <Link to='/activities' className='activity-item'>
+                                    <img src="/images/temp/main_section03_temp_02.png" alt="" />
+                                </Link>
+                                <Link to='/activities' className='activity-item'>
+                                    <img src="/images/temp/main_section03_temp_03.png" alt="" />
+                                </Link>
+                                <Link to='/activities' className='activity-item'>
+                                    <img src="/images/temp/main_section03_temp_04.png" alt="" />
+                                </Link>
+                                <Link to='/activities' className='activity-item'>
+                                    <img src="/images/temp/main_section03_temp_05.png" alt="" />
+                                </Link>
+                                <Link to='/activities' className='activity-item'>
+                                    <img src="/images/temp/main_section03_temp_06.png" alt="" />
+                                </Link>
                             </div>
                             
                             <Link to='/activities' className='btn-more type2'>
@@ -94,7 +111,7 @@ const Home = () => {
                             <div className='review-inner'>
                                 <Link to='/reivew' className='review-link'>
                                     <div className='img-wrap'>
-                                        <img src="" alt="" />
+                                        <img src="/images/temp/main_section05_temp.png" alt="" />
                                     </div>
                                     <div className='text-wrap'>
                                         <p className='title'>강릉 영진해변</p>
@@ -103,7 +120,7 @@ const Home = () => {
                                 </Link>
                                 <Link to='/reivew' className='review-link'>
                                     <div className='img-wrap'>
-                                        <img src="" alt="" />
+                                        <img src="/images/temp/main_section05_temp.png" alt="" />
                                     </div>
                                     <div className='text-wrap'>
                                         <p className='title'>강릉 영진해변</p>
@@ -112,7 +129,7 @@ const Home = () => {
                                 </Link>
                                 <Link to='/reivew' className='review-link'>
                                     <div className='img-wrap'>
-                                        <img src="" alt="" />
+                                        <img src="/images/temp/main_section05_temp.png" alt="" />
                                     </div>
                                     <div className='text-wrap'>
                                         <p className='title'>강릉 영진해변</p>

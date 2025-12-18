@@ -36,6 +36,7 @@ header {position: sticky; top: 0; width: 100%; background-color: #fff;}
 .header-wrap .header-inner .header__util-wrap .header__util-inner .header__util-list li:first-child {padding: 15px 5px 10px;}
 .header-wrap .header-inner .header__util-wrap .header__util-inner .header__util-list li:last-child {padding: 10px 5px 15px;}
 .header-wrap .header-inner .header__util-wrap .header__util-inner .header__util-list li:not(:first-child) {border-top: 1px solid #ccc;}
+.header-wrap .header-inner .header__util-wrap .header__util-inner .header__util-list li a {display: block;}
 
 .header-wrap .header-inner .header__util-wrap .header__util-inner .search-area {position: relative; padding-bottom: 13px; transform: translateY(7px);}
 .header-wrap .header-inner .header__util-wrap .header__util-inner .search-area .search__form-wrap {overflow: hidden; position: absolute; top: 100%; right: -15px; width: 300px; max-height: 0; padding: 10px 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff; box-shadow: 0px 5px 12px rgba(0, 0, 0, .05); box-sizing: border-box; opacity: 0; transition: max-height .25s ease, opacity .2s ease; pointer-events: none;}
