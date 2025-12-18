@@ -1,0 +1,30 @@
+/* sub page에서만 사용하는 스타일 */
+.spg-top{width:100vw;height:591px;}
+.spg-header-image{width:100%;height:100%;display:block;object-fit:cover;}
+
+.spg-content{max-width:1200px;margin:40px auto;padding:0 20px;}
+.spg-jeju-title{margin-top:150px;font-family:'Candal',cursive;font-size:72px;}
+
+.sec1{width:100%;height:700px;margin-top:100px;display:flex;justify-content:space-between;}
+.text{width:30%;}
+.spg-place-title{font-size:24px;font-weight:bold;-webkit-text-stroke:1px black;text-stroke:1px black;margin:0;}
+.spg-place-description{font-size:14px;line-height:1.6;margin-top:100px;word-wrap:break-word;}
+
+.image{width:66%; position:relative;}
+.spg-subheader-image{position:absolute;left:0;top:0;width:790px;height:407px;display:block;object-fit:cover;border-radius:100px 100px 0 0;}
+.spg-subsmall-image-1{position:absolute;left:0;top:410px;width:256px;height:150px;object-fit:cover;}
+.spg-subsmall-image-2{position:absolute;left:259px;top:410px;width:256px;height:150px;object-fit:cover;}
+.spg-subsmall-image-3{position:absolute;left:520px;top:410px;width:268px;height:150px;object-fit:cover;}
+
+.spg-places-title{font-family:'Candal',cursive;font-size:32px;text-align:center;margin:50px;}
+
+/*
+@media screen and (max-width:1600px){.spg-jeju-title{left:200px;font-size:64px;}.spg-place-title{left:200px;top:950px;}.spg-place-description{left:200px;top:1100px;width:350px;}.spg-subheader-image{left:650px;top:950px;width:700px;height:360px;}.spg-subsmall-image-1{left:650px;top:1320px;width:227px;}.spg-subsmall-image-2{left:882px;top:1320px;width:227px;}.spg-subsmall-image-3{left:1114px;top:1320px;width:236px;}.spg-places-title{top:1550px;}}
+@media screen and (max-width:1366px){.spg-jeju-title{left:100px;font-size:56px;top:700px;}.spg-place-title{left:100px;top:900px;}.spg-place-description{left:100px;top:1050px;width:320px;}.spg-subheader-image{left:520px;top:900px;width:650px;height:335px;}.spg-subsmall-image-1{left:520px;top:1245px;width:210px;}.spg-subsmall-image-2{left:735px;top:1245px;width:210px;}.spg-subsmall-image-3{left:950px;top:1245px;width:220px;}.spg-places-title{top:1450px;font-size:28px;}}
+@media screen and (max-width:1024px){.spg-header-image{height:400px;}.spg-jeju-title{left:50px;top:500px;font-size:48px;}.spg-place-title{left:50px;top:600px;font-size:20px;}.spg-place-description{left:50px;top:680px;width:90%;max-width:500px;}.spg-subheader-image{left:50%;transform:translateX(-50%);top:900px;width:90%;max-width:700px;height:auto;}.spg-subsmall-image-1{left:5%;top:1250px;width:30%;}.spg-subsmall-image-2{left:35%;top:1250px;width:30%;}.spg-subsmall-image-3{left:65%;top:1250px;width:30%;}.spg-places-title{top:1450px;font-size:24px;}}
+*/
+.spg-image-box-container{display:flex;gap:30px;justify-content:space-between;}
+.spg-image-box-1,.spg-image-box-2,.spg-image-box-3{width:394px;height:503px;object-fit:cover;border-radius:40px;}
+.spg-text-box-container{display:flex ground-color:white; widht:394px;height:200px boder-relative:20px}}
+.spg-box-wrapper{position:relative;}
+
