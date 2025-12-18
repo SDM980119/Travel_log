@@ -1,161 +1,214 @@
 import React, { useState } from 'react';
-import { Card, Button, Form, Alert, ToggleButtonGroup, ToggleButton, Spinner } from 'react-bootstrap';
-import { GENDER } from '../../constants/enums'
+import { GENDER } from '../../constants/enums';
+import { check, signUp } from '../../API/auth';
+import './SignUp.css';
 
-const Auth = () => {
-  const [mode, setMode] = useState()
-  const [loading, setLoading] = useState(false);
-  const [msg, setMsg] = useState(null);
+const SignUp = () => {
+  const [form, setForm] = useState({
+    userid: "",
+    password: "",
+    password2: "",
+    gender: "",
+    email: "",
+    username: "",
+    phone: "",
+  });
 
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
-  const [pw2, setPw2] = useState('');
-  const [gender, setGender] = useState('');
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
 
-  const resetMsg = () => setMsg(null);
+  const [dupMsg, setDupMsg] = useState({
+    userid: "",
+    email: "",
+    username: "",
+    phone: "",
+  });
 
-  const validate = () => {
-    if (!email) return setMsg({ type: 'danger', text: 'Email required.' });
-    if (!/\S+@\S+\.\S+/.test(email))
-      return setMsg({ type: 'danger', text: 'Invalid email format.' });
+  const [available, setAvailable] = useState({
+    userid: null,
+    email: null,
+    username: null,
+    phone: null,
+  });
 
-    if (!pw) return setMsg({ type: 'danger', text: 'Password required.' });
 
-    if (mode === 'signup') {
-      if (!name) return setMsg({ type: 'danger', text: 'Name required.' });
-      if (pw.length < 6)
-        return setMsg({ type: 'danger', text: 'Password must be ≥ 6 characters.' });
-      if (pw !== pw2)
-        return setMsg({ type: 'danger', text: 'Passwords do not match.' });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // 입력이 바뀌면 중복 메시지 & 상태 초기화
+    if (['userid', 'email', 'username', 'phone'].includes(name)) {
+      setDupMsg(prev => ({
+        ...prev,
+        [name]: '',
+      }));
+
+      setAvailable(prev => ({
+        ...prev,
+        [name]: null,
+      }));
     }
-
-    return true;
   };
 
-  const submit = (e) => {
-    e.preventDefault();
-    resetMsg();
-    if (!validate()) return;
 
-    setLoading(true);
+  // 아이디 중복 체크
+  const checkField = async (field, value) => {
+    if (!value) return;
 
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const res = await check(field, value);
 
-      if (mode === 'login') {
-        if (email === 'test@example.com' && pw === '123456') {
-          setMsg({ type: 'success', text: 'Login success!' });
-        } else {
-          setMsg({ type: 'danger', text: 'Login failed.' });
-        }
-      } else {
-        setMsg({ type: 'success', text: 'Signup complete!' });
-        setName('');
-        setEmail('');
-        setPw('');
-        setPw2('');
-        setMode('login');
-      }
-    }, 800);
+      setAvailable(prev => ({
+        ...prev,
+        [field]: res.data.available,
+      }));
+
+      setDupMsg(prev => ({
+        ...prev,
+        [field]: res.data.available
+          ? '사용 가능합니다.'
+          : '이미 사용 중입니다.',
+      }));
+    } catch {
+      setDupMsg(prev => ({
+        ...prev,
+        [field]: '중복 확인 실패',
+      }));
+    }
   };
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const { userid, password, password2, email, username } = form;
+
+  if (!userid || !password || !password2 || !email || !username) {
+    alert('필수 항목을 모두 입력해주세요.');
+    return;
+  }
+
+  if (password !== password2) {
+    alert('비밀번호가 일치하지 않습니다.');
+    return;
+  }
+
+  if (Object.values(available).some(v => v !== true)) {
+    alert('중복 확인을 완료해주세요.');
+    return;
+  }
+
+  try {
+    await signUp(form);
+    alert('회원가입이 완료되었습니다.');
+    window.location.href = '/Login';
+  } catch (err) {
+    console.error(err);
+    alert('회원가입에 실패했습니다.');
+  }
+};
+
+
 
   return (
-    <Card className="p-3">
+    <div className="signup-page">
+      <section className="signup-left">
+        <div class="signup-profile">
+          <div class="signup-profile-circle"></div>
+          <span class="signup-profile-text">프로필 사진 추가</span>
+        </div>
 
-      {msg && <Alert variant={msg.type}>{msg.text}</Alert>}
-
-      <Form onSubmit={submit}>
-        <Form.Group className="mb-3">
-          <Form.Label>아이디</Form.Label>
-          <Form.Control
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-            placeholder="아이디를 입력해 주세요"
+        <form className="signup-form" onSubmit={handleSubmit}>
+          <input
+            className="signup-input"
+            type="text"
+            name="userid"
+            placeholder="아이디"
+            value={form.userid}
+            onChange={handleChange}
+            onBlur={() => checkField('userid', form.userid)}
           />
-        </Form.Group>
+          <p>{dupMsg.userid}</p>
 
-
-        <Form.Group className="mb-3">
-          <Form.Label>비밀번호</Form.Label>
-          <Form.Control
-            value={pw}
+          <input
+            className="signup-input"
             type="password"
-            onChange={(e) => setPw(e.target.value)}
-            placeholder="비밀번호를 입력해 주세요"
+            name="password"
+            placeholder="비밀번호"
+            value={form.password}
+            onChange={handleChange}
           />
-        </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Label>성별</Form.Label>
-          <div className='d=flex gap3'>
-            <Form.Check
-              type='radio'
-              label='Male'
-              name='gender'
-              value={GENDER.MALE}
-              checked={gender === GENDER.MALE}
-              onChange={(e) => setGender(e.target.value)}
-            ></Form.Check>
-            <Form.Check
-              type='radio'
-              label='Female'
-              name='gender'
-              value={GENDER.FEMALE}
-              checked={gender === GENDER.FEMALE}
-              onChange={(e) => setGender(e.target.value)}
-            ></Form.Check>
-          </div>
-        </Form.Group>
+          <input
+            className="signup-input"
+            type="password"
+            name="password2"
+            placeholder="비밀번호 확인"
+            value={form.password2}
+            onChange={handleChange}
+          />
 
-        <Form.Group className="mb-3">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            value={email}
+          <select
+            className="signup-input"
+            name="gender"
+            value={form.gender}
+            onChange={handleChange}
+          >
+            <option value="">성별 선택</option>
+            <option value={GENDER.MALE}>남성</option>
+            <option value={GENDER.FEMALE}>여성</option>
+          </select>
+
+          <input
+            className="signup-input"
             type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="name@example.com"
+            name="email"
+            placeholder="이메일"
+            value={form.email}
+            onChange={handleChange}
+            onBlur={() => checkField('email', form.email)}
           />
-        </Form.Group>
+          <p>{dupMsg.email}</p>
 
-        <Form.Group className="mb-3">
-          <Form.Label>닉네임</Form.Label>
-          <Form.Control
-            value={name}
-            type="name"
-            onChange={(e) => setName(e.target.value)}
-            placeholder="닉네임을 입력해 주세요"
+          <input
+            className="signup-input"
+            type="text"
+            name="username"
+            placeholder="닉네임"
+            value={form.username}
+            onChange={handleChange}
+            onBlur={() => checkField('username', form.username)}
           />
-        </Form.Group>
+          <p>{dupMsg.username}</p>
 
-        <Form.Group className="mb-3">
-          <Form.Label>전화번호</Form.Label>
-          <Form.Control
-            value={phone}
-            type="phone"
-            onChange={(e) => setPhone(e.target.value)}
+          <input
+            className="signup-input"
+            type="text"
+            name="phone"
             placeholder="전화번호"
+            value={form.phone}
+            onChange={handleChange}
+            onBlur={() => checkField('phone', form.phone)}
           />
-        </Form.Group>
-        {/* 
-          <Form.Group className="mb-3">
-            <Form.Label>비밀번호 확인</Form.Label>
-            <Form.Control
-              value={pw2}
-              type="password"
-              onChange={(e) => setPw2(e.target.value)}
-              placeholder="비밀번호 확인"
-            />
-          </Form.Group>
-         */}
+          <p>{dupMsg.phone}</p>
 
-        <Button type="submit" className="w-100" disabled={loading}>회원가입
-        </Button>
-      </Form>
-    </Card>
+          <button className="signup-submit-button" type="submit">
+            회원가입
+          </button>
+        </form>
+
+        <span className="signup-profile-text">
+          <a href="/Login">계정을 가지고 계십니까?</a>
+        </span>
+      </section>
+
+      <section className="signup-right">
+        <img className="signup-bg-img" src="/images/login/회원가입 페이지 이미지.jpg" alt="signup-bg-img" />
+      </section>
+    </div>
   );
 };
 
-export default Auth;
+export default SignUp;
