@@ -46,9 +46,8 @@ class User(db.Model):                                                           
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)                                                                                                # user 테이블에 유저 정보가 저장되면 생성 순서대로 자동으로 만들어짐
     email = db.Column(db.String(50), unique=True, nullable=False)                                                                                                   # 이메일            # 필수입력    # 중복불가
     userid = db.Column(db.String(50), unique=True, nullable=False)                                                                                                  # 아이디            # 필수입력    # 중복불가
-    password = db.Column(db.String(80), nullable=False)                                                                                                             # 비밀번호          # 필수입력
+    password = db.Column(db.String(300), nullable=False)                                                                                                             # 비밀번호          # 필수입력
     username = db.Column(db.String(80), unique=True, nullable=False)                                                                                                # 닉네임            # 필수입력    # 중복불가
-    birthday = db.Column(db.Date, nullable=False)                                                                                                                   # 생일              # 필수입력
     gender = db.Column(db.String(10), nullable=False)                                                                                                               # 성별              # 필수입력    # enum 값
     phone = db.Column(db.String(30), unique=True, nullable=False)                                                                                                   # 전화번호          # 필수입력    # 중복불가
     profile_image = db.Column(db.String(200), nullable=False, default='user_img/default.jpg')                                                                       # 프로필사진        # 필수입력                기본값있음
