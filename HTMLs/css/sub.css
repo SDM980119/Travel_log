@@ -16,3 +16,31 @@
 @media screen and (max-width:1366px){.spg-jeju-title{left:100px;font-size:56px;top:700px;}.spg-place-title{left:100px;top:900px;}.spg-place-description{left:100px;top:1050px;width:320px;}.spg-subheader-image{left:520px;top:900px;width:650px;height:335px;}.spg-subsmall-image-1{left:520px;top:1245px;width:210px;}.spg-subsmall-image-2{left:735px;top:1245px;width:210px;}.spg-subsmall-image-3{left:950px;top:1245px;width:220px;}.spg-places-title{top:1450px;font-size:28px;}}
 @media screen and (max-width:1024px){.spg-header-image{height:400px;}.spg-jeju-title{left:50px;top:500px;font-size:48px;}.spg-place-title{left:50px;top:600px;font-size:20px;}.spg-place-description{left:50px;top:680px;width:90%;max-width:500px;}.spg-subheader-image{left:50%;transform:translateX(-50%);top:900px;width:90%;max-width:700px;height:auto;}.spg-subsmall-image-1{left:5%;top:1250px;width:30%;}.spg-subsmall-image-2{left:35%;top:1250px;width:30%;}.spg-subsmall-image-3{left:65%;top:1250px;width:30%;}.spg-places-title{top:1450px;font-size:24px;}}
 </style>
+/* 회원가입 페이지 */
+@import url('https://fonts.googleapis.com/css2?family=Candal&family=Inter:wght@400;700&display=swap');
+.signup-page {display: flex;width: 100%;height: 100vh;font-family: 'Inter', sans-serif;}
+.signup-left {width: 48%;background-color: #ffffff;display: flex;flex-direction: column;align-items: center;justify-content: center;}
+.signup-profile {text-align: center; margin-bottom: 30px;}
+.signup-profile-circle {width: 90px; height: 90px; border-radius: 50%; border: 1px solid #949494; margin: 0 auto 10px;}
+.signup-profile-text {font-size: 12px; color: #949494; cursor: pointer; text-decoration: underline; font-family: 'Inter', sans-serif;}
+.signup-form { width: 280px;}
+.signup-input {width: 100%; height: 40px; padding: 0 12px; margin-bottom: 12px; border: 1px solid #949494; border-radius: 7px; font-size: 14px;color: #949494; box-sizing: border-box; font-family: 'Inter', sans-serif;}
+.signup-input::placeholder {font-family: 'Inter', sans-serif;}
+.signup-submit-button {width: 100%; height: 48px; background-color: #081E5A; border: none; border-radius: 7px; color: #ffffff; font-size: 14px; margin-top: 10px; margin-bottom: 30px; font-family: 'Inter', sans-serif;}
+.signup-right {width: 52%; background-size: cover; background-position: center; overflow: hidden;}
+.signup-bg-img {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+@media (max-width: 768px) {.signup-page {flex-direction: column; height: auto;}.signup-left {width: 100%; padding: 40px 0;}.signup-right {display: none;}.signup-form {width: 80%; max-width: 320px;}}
+
+/* 로그인 페이지 */
+@import url('https://fonts.googleapis.com/css2?family=Candal&family=Inter:wght@400;700&display=swap');
+.login-page {display: flex;width: 100%;height: 100vh;font-family: 'Inter', sans-serif;}
+.login-left {width: 52%; background-size: cover; background-position: center; overflow: hidden;}
+.login-right {width: 48%; background-color: #ffffff;display: flex; flex-direction: column; align-items: center; justify-content: center;}
+.login-bg-img {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}
+.login-form { width: 280px;}
+.login-logo {display: block; width: 200px; margin: 0 auto -30px}
+.login-message{display:block; width: 100%; text-align: center; font-size: 12px; color: #696969; font-family: 'Inter', sans-serif;} 
+.login-input:first-of-type {margin-top: 30px;}
+.login-input {width: 100%; height: 40px; padding: 0 12px; margin-bottom: 12px; border: 1px solid #949494; border-radius: 7px; font-size: 14px;color: #949494; box-sizing: border-box; font-family: 'Inter', sans-serif;}
+.login-submit-button {width: 100%; height: 48px; background-color: #081E5A; border: none; border-radius: 7px; color: #ffffff; font-size: 14px; margin-top: 10px; margin-bottom: 30px; font-family: 'Inter', sans-serif;}
+@media (max-width: 768px) {.login-page {flex-direction: column-reverse; height: auto;}.login-right {width: 100%; padding: 60px 0;}.login-left {display: none;}.login-form {width: 80%; max-width: 320px;}}
