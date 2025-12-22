@@ -28,7 +28,17 @@ const SignUp = () => {
     username: null,
     phone: null,
   });
+  
+  const [file, setFile] = useState('')
+  const [view, setView] = useState('')
 
+  const handleFileChange = (e) => {
+    const selected = e.target.files[0];
+    if (!selected) return;
+
+    setFile(selected);
+    setView(URL.createObjectURL(selected));
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -115,9 +125,15 @@ const handleSubmit = async (e) => {
   return (
     <div className="signup-page">
       <section className="signup-left">
-        <div class="signup-profile">
-          <div class="signup-profile-circle"></div>
-          <span class="signup-profile-text">프로필 사진 추가</span>
+        <div className="signup-profile">
+          <div className="signup-profile-circle">
+            {view ? (
+              <img src={view} alt='프로필 미리보기'/>
+            ):(
+              <span className='signup-profile-preview' />
+            )}
+          </div>
+          <label className="signup-profile-text"> 프로필 사진 추가 <input type='file' accept='image/*' onChange={handleFileChange}hidden /></label>
         </div>
 
         <form className="signup-form" onSubmit={handleSubmit}>
