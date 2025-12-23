@@ -141,6 +141,7 @@ const SignUp = () => {
               )}
             </div>
             <label className="text"> 프로필 사진 추가 <input type='file' accept='image/*' onChange={handleFileChange}hidden /></label>
+          </div>
           <form className="signup-form" onSubmit={handleSubmit}>
             <input
               className="signup-input"
@@ -220,9 +221,7 @@ const SignUp = () => {
             </button>
           </form>
 
-          <span className="text">
-            <a href="/Login">계정을 가지고 계십니까?</a>
-          </span>
+          <a href="/Login" className="text">계정을 가지고 계십니까?</a>
         </div>
         </div>
 
