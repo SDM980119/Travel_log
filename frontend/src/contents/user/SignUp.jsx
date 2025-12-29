@@ -29,10 +29,12 @@ const SignUp = () => {
   });
 
   const phoneRegex = /^010-?\d{4}-?\d{4}$/;
-  const [file, setFile] = useState('')
-  const [view, setView] = useState('')
-  const API_BASE = 'http://localhost:5000'
-  const DEFAULT_IMG = `${API_BASE}/static/user_img/default.jpg`
+
+  const [file, setFile] = useState(null);
+  const [view, setView] = useState('');
+
+  const API_BASE = 'http://localhost:5000';
+  const DEFAULT_IMG = `${API_BASE}/static/user_img/default.jpg`;
 
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
@@ -43,19 +45,19 @@ const SignUp = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setForm((prev) => ({
       ...prev,
       [name]: value,
     }));
 
-    if (!phoneRegex.test(value)){
-      setDupMsg(prev => ({
+    if (name === 'phone' && !phoneRegex.test(value)) {
+      setDupMsg((prev) => ({
         ...prev,
-        phone:'전화번호 형식이 다릅니다.',
-      }))
+        phone: '전화번호 형식이 다릅니다.',
+      }));
     }
 
-    // 입력이 바뀌면 중복 메시지 & 상태 초기화
     if (['userid', 'email', 'username', 'phone'].includes(name)) {
       setDupMsg((prev) => ({
         ...prev,
@@ -70,6 +72,7 @@ const SignUp = () => {
 
   const checkField = async (field, value) => {
     if (!value) return;
+
     try {
       const res = await check(field, value);
       setAvailable((prev) => ({
@@ -78,7 +81,9 @@ const SignUp = () => {
       }));
       setDupMsg((prev) => ({
         ...prev,
-        [field]: res.data.available ? '사용 가능합니다.' : '이미 사용 중입니다.',
+        [field]: res.data.available
+          ? '사용 가능합니다.'
+          : '이미 사용 중입니다.',
       }));
     } catch {
       setDupMsg((prev) => ({
@@ -107,20 +112,17 @@ const SignUp = () => {
       alert('중복 확인을 완료해주세요.');
       return;
     }
-    // if (phone !== phoneRegex){
-    //   alert('전화번호 형식이 다릅니다.')
-    //   return;
-    // }
 
     const formData = new FormData();
 
-    Object.entries(form).forEach(([Key, value]) => {
-      if (Key !== 'password2'){
-        formData.append(Key, value)}
-    })
+    Object.entries(form).forEach(([key, value]) => {
+      if (key !== 'password2') {
+        formData.append(key, value);
+      }
+    });
 
-    if(file){
-      formData.append('profile_image',file)
+    if (file) {
+      formData.append('profile_image', file);
     }
 
     try {
@@ -139,13 +141,7 @@ const SignUp = () => {
           <div className="signup-item">
             <div className="profile">
               <div className="img-wrap">
-                {view ? (
-                  <img src={view || DEFAULT_IMG} alt="프로필 미리보기" />
-                ) : (
-                  <span className="preview">
-                    <img src={DEFAULT_IMG} alt="" />
-                  </span>
-                )}
+                <img src={view || DEFAULT_IMG} alt="프로필 미리보기" />
               </div>
               <label className="text">
                 프로필 사진 추가
@@ -242,7 +238,8 @@ const SignUp = () => {
             </a>
         </div>
 
-        <div className="bg-wrap"></div>
+          <div className="bg-wrap"></div>
+        </div>
       </div>
 
       <div className="bg-wrap"></div>
