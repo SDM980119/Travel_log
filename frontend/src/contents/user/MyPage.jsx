@@ -47,6 +47,10 @@ const MyPage = () => {
               {slides.map((_, i) => (
                 <SwiperSlide key={i} className="mypage-swiper-slide">
                   <div className="mypage-card">
+                    <div className="img-wrap">
+                      {/* 이미지 영역 */}
+                      <img src="/images/temp/temp.png" alt="" />
+                    </div>
                     <div className="mypage-card-bottom-info">
                       <img src="/images/login/wishlist.png" className="mypage-wish-icon" alt="" />
                       <span className="mypage-card-text">스누피가든</span>
@@ -98,7 +102,7 @@ const MyPage = () => {
           </div>
         </section>
 
-        <section className="mypage-section">
+        <section className="mypage-section recommend">
           <h3 className="mypage-section-title">추천 여행지</h3>
           <div className="mypage-list">
             {recommendations.map(item => (

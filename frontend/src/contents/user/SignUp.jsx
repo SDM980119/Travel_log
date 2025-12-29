@@ -5,20 +5,21 @@ import './SignUp.css';
 
 const SignUp = () => {
   const [form, setForm] = useState({
-    userid: '',
-    password: '',
-    password2: '',
-    gender: '',
-    email: '',
-    username: '',
-    phone: '',
+    userid: "",
+    password: "",
+    password2: "",
+    gender: "",
+    email: "",
+    username: "",
+    phone: "",
   });
 
+
   const [dupMsg, setDupMsg] = useState({
-    userid: '',
-    email: '',
-    username: '',
-    phone: '',
+    userid: "",
+    email: "",
+    username: "",
+    phone: "",
   });
 
   const [available, setAvailable] = useState({
@@ -34,21 +35,19 @@ const SignUp = () => {
   const API_BASE = 'http://localhost:5000'
   const DEFAULT_IMG = `${API_BASE}/static/user_img/default.jpg`
 
-  const [file, setFile] = useState('');
-  const [view, setView] = useState('');
-  const API_BASE = 'http://localhost:5000';
-  const DEFAULT_IMG = `${API_BASE}/static/user_img/default.jpg`;
 
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
     if (!selected) return;
+
     setFile(selected);
     setView(URL.createObjectURL(selected));
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((prev) => ({
+
+    setForm(prev => ({
       ...prev,
       [name]: value,
     }));
@@ -62,36 +61,45 @@ const SignUp = () => {
 
     // 입력이 바뀌면 중복 메시지 & 상태 초기화
     if (['userid', 'email', 'username', 'phone'].includes(name)) {
-      setDupMsg((prev) => ({
+      setDupMsg(prev => ({
         ...prev,
         [name]: '',
       }));
-      setAvailable((prev) => ({
+
+      setAvailable(prev => ({
         ...prev,
         [name]: null,
       }));
     }
   };
 
+
+  // 아이디 중복 체크
   const checkField = async (field, value) => {
     if (!value) return;
+
     try {
       const res = await check(field, value);
-      setAvailable((prev) => ({
+
+      setAvailable(prev => ({
         ...prev,
         [field]: res.data.available,
       }));
-      setDupMsg((prev) => ({
+
+      setDupMsg(prev => ({
         ...prev,
-        [field]: res.data.available ? '사용 가능합니다.' : '이미 사용 중입니다.',
+        [field]: res.data.available
+          ? '사용 가능합니다.'
+          : '이미 사용 중입니다.',
       }));
     } catch {
-      setDupMsg((prev) => ({
+      setDupMsg(prev => ({
         ...prev,
         [field]: '중복 확인 실패',
       }));
     }
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -108,7 +116,7 @@ const SignUp = () => {
       return;
     }
 
-    if (Object.values(available).some((v) => v !== true)) {
+    if (Object.values(available).some(v => v !== true)) {
       alert('중복 확인을 완료해주세요.');
       return;
     }
@@ -139,113 +147,6 @@ const SignUp = () => {
   };
 
   return (
-    <>
-      <div className="signup-wrap">
-        <div className="signup-inner">
-          <div className="signup-item">
-            <div className="profile">
-              <div className="img-wrap">
-                {view ? (
-                  <img src={view || DEFAULT_IMG} alt="프로필 미리보기" />
-                ) : (
-                  <span className="preview">
-                    <img src={DEFAULT_IMG} alt="" />
-                  </span>
-                )}
-              </div>
-              <label className="text">
-                프로필 사진 추가
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  hidden
-                />
-              </label>
-            </div>
-
-            <form className="signup-form" onSubmit={handleSubmit}>
-              <input
-                className="signup-input"
-                type="text"
-                name="userid"
-                placeholder="아이디"
-                value={form.userid}
-                onChange={handleChange}
-                onBlur={() => checkField('userid', form.userid)}
-              />
-              <p>{dupMsg.userid}</p>
-
-              <input
-                className="signup-input"
-                type="password"
-                name="password"
-                placeholder="비밀번호"
-                value={form.password}
-                onChange={handleChange}
-              />
-
-              <input
-                className="signup-input"
-                type="password"
-                name="password2"
-                placeholder="비밀번호 확인"
-                value={form.password2}
-                onChange={handleChange}
-              />
-
-              <select
-                className="signup-input"
-                name="gender"
-                value={form.gender}
-                onChange={handleChange}
-              >
-                <option value="">성별 선택</option>
-                <option value={GENDER.MALE}>남성</option>
-                <option value={GENDER.FEMALE}>여성</option>
-              </select>
-
-              <input
-                className="signup-input"
-                type="email"
-                name="email"
-                placeholder="이메일"
-                value={form.email}
-                onChange={handleChange}
-                onBlur={() => checkField('email', form.email)}
-              />
-              <p>{dupMsg.email}</p>
-
-              <input
-                className="signup-input"
-                type="text"
-                name="username"
-                placeholder="닉네임"
-                value={form.username}
-                onChange={handleChange}
-                onBlur={() => checkField('username', form.username)}
-              />
-              <p>{dupMsg.username}</p>
-
-              <input
-                className="signup-input"
-                type="text"
-                name="phone"
-                placeholder="전화번호"
-                value={form.phone}
-                onChange={handleChange}
-                onBlur={() => checkField('phone', form.phone)}
-              />
-              <p>{dupMsg.phone}</p>
-
-              <button className="signup-submit-button" type="submit">
-                회원가입
-              </button>
-            </form>
-
-            <a href="/Login" className="text">
-              계정을 가지고 계십니까?
-            </a>
     <div className="signup-wrap">
       <div className="signup-inner">
         <div className="signup-item">
@@ -344,9 +245,7 @@ const SignUp = () => {
 
         <div className="bg-wrap"></div>
       </div>
-
-      <div className="bg-wrap"></div>
-    </>
+    </div>
   );
 };
 
