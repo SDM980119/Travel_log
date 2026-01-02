@@ -53,12 +53,12 @@ const Header = () => {
                                 </NavLink>
                                 </li>
                                 <li className="gnb">
-                                <NavLink to="/places/activities" className="gnb-link">
+                                <NavLink to="/places/activity" className="gnb-link">
                                     액티비티
                                 </NavLink>
                                 </li>
                                 <li className="gnb">
-                                <NavLink to="/places/festivals" className="gnb-link">
+                                <NavLink to="/places/festival" className="gnb-link">
                                     축제
                                 </NavLink>
                                 </li>
@@ -70,6 +70,11 @@ const Header = () => {
                                 <li className="gnb">
                                 <NavLink to="/travelLog" className="gnb-link">
                                     나의 여행로그
+                                </NavLink>
+                                </li>
+                                <li>
+                                <NavLink to="/PlaceDetail" className="gnb-link">
+                                    디테일
                                 </NavLink>
                                 </li>
                             </ul>
@@ -103,7 +108,7 @@ const Header = () => {
                                                 <p>{user.username}</p>
                                             </li>
                                             <li>
-                                                <Link onClick={logout}>로그아웃</Link>
+                                                <Link to="/" onClick={logout}>로그아웃</Link>
                                             </li>
                                             <li>
                                                 <Link to="/MyPage" onClick={closeAll}>마이페이지</Link>
@@ -180,12 +185,12 @@ const Header = () => {
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/activities" className="gnb-link">
+                                        <NavLink to="/activity" className="gnb-link">
                                             액티비티
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/festivals" className="gnb-link">
+                                        <NavLink to="/festival" className="gnb-link">
                                             축제
                                         </NavLink>
                                     </li>
