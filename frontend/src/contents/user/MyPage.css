@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 .mypage-wrap {overflow-x: hidden; width: 100%;}
 .mypage-wrap .mypage-inner {width: 100%; max-width: 1250px; margin: 0 auto;}
 
@@ -145,4 +147,73 @@
 
 @media (max-width: 480px) {
     
+}
+
+.recommend .item {display: flex; align-items: center; gap: 40px; padding: 25px 40px; border-bottom: 1px solid #ddd;}
+.recommend .item:nth-of-type(1) {padding-top: 0;}
+.recommend .item .img-wrap img {width: 190px; height: 115px; flex-shrink: 0; object-fit: cover;}
+.recommend .item .item-content {flex: 1; min-width: 0; text-align: left;}
+.recommend .item .item-content .item-title {margin-top: -5px; margin-bottom: 15px; font-family: 'Candal', cursive; font-size: 20px; font-weight: bold; text-align: left;}
+.recommend .item .item-content .item-details {font-size: 16px; color: #666; line-height: 1.4; text-align: left;}
+.recommend .item .item-content .item-details p {display: flex; align-items: flex-start;}
+.recommend .item .item-content .item-details p + p {margin: 5px 0 0;}
+.recommend .item .item-content .item-details .tit { position: relative; padding: 0 0 0 15px; flex-shrink: 0;}
+.recommend .item .item-content .item-details .tit:before {content: ''; display: inline-block; position: absolute; top: 50%; left: 0; width: 5px; height: 5px; background: #666; border-radius: 100%; transform: translateY(-50%);}
+.recommend .item .item-actions {display: flex; align-items: center; gap: 12px; margin-left: auto; flex-shrink: 0;}
+.recommend .item .item-actions .item-tag {font-size: 16px; color: #999; white-space: nowrap;}
+.recommend .item .item-actions .detail-btn {padding: 10px 20px; background-color: #001f5c; color: #fff; border: none; border-radius: 5px; font-size: 14px; font-weight: bold; cursor: pointer; transition: background .3s; white-space: nowrap; flex-shrink: 0;}
+.recommend .item .item-actions .detail-btn:hover {background-color: #003580;}
+.recommend .pagination {display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 30px; padding-bottom: 15px;}
+.recommend .pagination button {padding: 6px 10px; background: none; border: none; font-size: 18px; color: #999; cursor: pointer;}
+.recommend .pagination button:hover {color: #333;}
+.recommend .pagination .current {font-size: 15px; font-weight: bold; color: #333;}
+
+.heart-btn {width: 25px; height: 25px; flex-shrink: 0;}
+.heart-btn img {width: 100%; height: 100%; transition: transform .2s ease, opacity .2s ease;}
+
+@media (max-width: 1250px) {
+    .recommend .item {gap: 35px; padding: 20px 35px;}
+}
+
+@media (max-width: 1024px) {
+    .recommend .item {display: flex; flex-direction: column; align-items: flex-start; gap: 30px; padding: 15px 30px; text-align: left;}
+    .recommend .item .img-wrap {width: 100%; height: 100%;}
+    .recommend .item .img-wrap img {width: 100%; max-width: 100%; height: 250px;}
+    .recommend .item .item-content .item-title {font-size: 18px;}
+    .recommend .item .item-content .item-details {font-size: 16px;}
+    .recommend .item .item-content .item-details p + p {margin: 4px 0 0;}
+    .recommend .item .item-actions {justify-content: flex-end; width: 100%; margin-left: 0;}
+    .recommend .item .item-actions .item-tag {font-size: 16px; margin-right: auto;}
+    .recommend .item .item-actions .detail-btn {padding: 7px 16px; font-size: 14px;}
+    
+    .heart-btn {width: 23px; height: 23px;}
+}
+
+@media (max-width: 768px) {
+    .recommend .item {gap: 25px; padding: 10px 0;}
+    .recommend .item .img-wrap img {height: 200px;}
+    .recommend .item .item-content {width: 100%; text-align: left;}
+    .recommend .item .item-content .item-title {margin-top: -5px; font-size: 16px; text-align: left;}
+    .recommend .item .item-content .item-details {font-size: 16px; text-align: left;}
+    .recommend .item .item-content .item-details p + p {margin: 3px 0 0;}
+    .recommend .item .item-actions {gap: 10px;}
+    .recommend .item .item-actions .item-tag {margin-right: auto; font-size: 16px;}
+    .recommend .item .item-actions .detail-btn {padding: 8px 20px; font-size: 14px; line-height: 16px;}
+    .recommend .pagination button {font-size: 12px;}
+    .recommend .pagination .current {font-size: 14px;}
+    
+    .heart-btn {width: 20px; height: 20px;}
+}
+
+@media (max-width: 480px) {
+    .recommend .item {display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 15px; padding: 18px 0;}
+    .recommend .item .img-wrap img {width: 100%; max-width: 100%; height: 180px;}
+    .recommend .item .item-content {width: 100%; text-align: left;}
+    .recommend .item .item-content .item-details {font-size: 14px; text-align: left;}
+    .recommend .item .item-actions {width: 100%; margin-left: 0; justify-content: flex-end; gap: 8px;}
+    .recommend .item .item-actions .item-tag {margin-right: auto; font-size: 14px;}
+    .recommend .item .item-actions .detail-btn {padding: 6px 12px; font-size: 12px;}
+    .recommend .pagination {gap: 5px; margin-top: 12px;}
+    .recommend .pagination button {padding: 3px 5px; font-size: 14px;}
+    .recommend .pagination .current {font-size: 14px;}
 }

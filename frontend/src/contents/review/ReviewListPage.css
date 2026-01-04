@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Candal&family=Inter:wght@400;700&display=swap');
+@charset "utf-8";
 
-html, body { width:100%; margin:0; padding:0; overflow-x:hidden; }
-.review-page { width:100%; background:#fff; font-family:'Inter',sans-serif; }
 .review-pic { width:100%; height:290px; background-size:cover; background-position:center; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
 .review-pic h1 { font-size:64px; font-weight:500; color:#0b2a63; font-family:'Candal'; margin-bottom:40px; }
 .review-search-box { display:flex; background:#fff; border-radius:7px; overflow:hidden; width:90%; max-width:380px; }
@@ -13,7 +11,7 @@ html, body { width:100%; margin:0; padding:0; overflow-x:hidden; }
 .review-table th { background:#6f8fcf; color:#fff; padding:12px 2px; text-align:center; vertical-align:middle; border-bottom:1px solid #ddd; font-size:15px; }
 .review-table td { padding:12px 2px; text-align:center; border-bottom:1px solid #ddd; font-size:14px; vertical-align:middle; }
 .review-table tr { height:48px; }
-.review-table tbody tr:hover { cursor:pointer; background:#f5f7fb; }
+.review-table tbody tr:hover { cursor:pointer; background:#edf0f5; }
 .col-no { width:10%; }
 .col-title { width:45%; }
 .col-nick { width:15%; }

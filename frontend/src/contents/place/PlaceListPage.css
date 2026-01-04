@@ -1,10 +1,5 @@
 @charset "utf-8";
 
-* {margin: 0; padding: 0; box-sizing: border-box;}
-
-body {font-family: "pretendard", sans-serif; color: #111;}
-
-
 .section-wrap {display: flex; justify-content: center; align-items: center; flex-direction: column;}
 
 .section-img {width: 100%; background: #e5e7eb; overflow: hidden; position: relative;}
@@ -43,7 +38,7 @@ body {font-family: "pretendard", sans-serif; color: #111;}
 
 .card-text h3{font-size: 20px; font-weight: 800; margin-bottom: 6px;}
 
-.card-text p{font-size: 13px; color: #6b7280; overflow: hidden; line-height: 1.45; /*height: 2.9em;*/ word-break: keep-all; white-space: pre-line;}
+.card-text p{font-size: 13px; color: #6b7280; overflow: hidden; line-height: 1.45; /*height: 2.9em;*/ word-break: keep-all; white-space: pre-line;display: -webkit-box; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
 
 .card:hover{border-color: #2563eb; box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);}
 

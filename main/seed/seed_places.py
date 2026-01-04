@@ -26,3 +26,5 @@ def seed_places():
 
 if __name__ == "__main__":
     seed_places()
+
+# python -m main.seed.seed_places

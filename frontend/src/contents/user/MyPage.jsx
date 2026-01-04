@@ -1,15 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Virtual, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import WishToggleButton from '../../components/common/WishToggleButton';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './MyPage.css';
+import { mypage } from '../../API/user';
 
 const MyPage = () => {
   const slides = Array.from({ length: 8 })
+  const [user, setUser] = useState(null)
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+
+    if (!token) {
+      navigate("/login", {
+        state: {
+          message: "로그인이 필요한 서비스입니다.",
+          from: location.pathname,
+        },
+        replace: true,
+      });
+    }
+  }, []);
+
+    useEffect(() => {
+      mypage()
+      .then(res => {
+        console.log("응답데이터", res.data);
+        setUser(res.data)})
+      .catch(err =>  console.error(err))
+    }, [])
+
   const recommendations = [
     { id: 1, title: 'Jeju', subTitle: '스누피가든', address: '제주특별자치도 제주시 구좌읍 금백조로 930', holiday: '연중무휴', facilities: '가든 하우스 / 야외가든' },
     { id: 2, title: 'Udo', subTitle: '검멀레해변', address: '제주특별자치도 제주시 우도면 연평리', holiday: '기상 상황에 따라 다름', facilities: '보트 체험 / 산책로' },
@@ -21,12 +49,12 @@ const MyPage = () => {
       <div className="mypage-inner">
         <section className="profile-wrap">
           <div className="profile-inner">
-            <div className="img-wrap" />
-            <Link to="/MyPage" className="edit-profile">회원정보 수정</Link>
+            <img className="img-wrap" src={`http://localhost:5000${user?.user_img}`}/>
+            <Link to="/MyPageModify" className="edit-profile">회원정보 수정</Link>
           </div>
           <div className="text-wrap">
             <span className="badge">닉네임</span>
-            <span className="username">1234jeju</span>
+            <span className="username">{user?.username}</span>
           </div>
         </section>
 
@@ -136,29 +164,56 @@ const MyPage = () => {
         </section>
 
         <section className="mypage-section recommend">
-          <h3 className="mypage-section-title">추천 여행지</h3>
-          <div className="mypage-list">
-            {recommendations.map(item => (
-              <div className="mypage-list-item" key={item.id}>
-                <div className="mypage-list-thumb" />
-                <div className="mypage-list-info">
-                  <div className="mypage-info-header">
-                    <span className="mypage-info-title-en">{item.title}</span>
-                    <span className="mypage-info-title-ko">{item.subTitle}</span>
-                  </div>
-                  <ul className="mypage-info-details">
-                    <li>주소 : {item.address}</li>
-                    <li>휴일 : {item.holiday}</li>
-                    <li>이용가능시설 : {item.facilities}</li>
-                  </ul>
+          <h3 className="mypage-section-title">추천 여행지</h3>          
+          {["성산일출봉", "제주 4.3 평화 공원", "카멜리아 힐"].map(
+            (tag, i) => (
+                <div className="item" key={i}>
+                    <div className="img-wrap">
+                        <img
+                        src="/images/placedetail/snoopt1.jpg"
+                        alt=""
+                        />
+                    </div>
+
+                    <div className="item-content">
+                        <h2 className="item-title">Jeju</h2>
+                        <div className="item-details">
+                            <p>
+                                <span className="tit">주소 :</span>
+                                &nbsp;
+                                <span className="txt">제주특별자치도 제주시 구좌읍 금백조로 930</span>
+                            </p>
+                            <p>
+                                <span className="tit">휴일 :</span>
+                                &nbsp;
+                                <span className="txt">연중무휴</span>
+                            </p>
+                            <p>
+                                <span className="tit">이용가능시설 :</span>
+                                &nbsp;
+                                <span className="txt">카드 하우스 / 야외카드</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="item-actions">
+                        <span className="item-tag">{tag}</span>
+                        <WishToggleButton className="heart-btn" />
+                        <button className="detail-btn">
+                            상세 정보 보러가기
+                        </button>
+                    </div>
                 </div>
-                <div className="mypage-list-side">
-                  <WishToggleButton className="mypage-wish-icon" />
-                  <button className="mypage-list-btn">상세 정보 보러가기</button>
-                </div>
-              </div>
-            ))}
-          </div>
+            )
+            )}
+
+            <div className="pagination">
+                <button>&lt;&lt;</button>
+                <button>&lt;</button>
+                <button className="current">1</button>
+                <button>&gt;</button>
+                <button>&gt;&gt;</button>
+            </div>
         </section>
       </div>
     </div>
