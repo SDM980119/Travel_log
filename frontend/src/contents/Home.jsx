@@ -60,7 +60,7 @@ const Home = () => {
                                     <img src="/images/temp/main_section02_temp_03.png " alt="" />
                                 </Link>
                             </div>
-                            <Link to='/places' className='btn-more type2'>
+                            <Link to='/places/travel' className='btn-more type2'>
                                 여행지 보러가기
                             </Link> 
                         </div>
@@ -96,7 +96,7 @@ const Home = () => {
                                 </Link>
                             </div>
                             
-                            <Link to='/activities' className='btn-more type2'>
+                            <Link to='/places/activity' className='btn-more type2'>
                                 액티비티 보러가기
                             </Link> 
                         </div>
@@ -209,7 +209,7 @@ const Home = () => {
                                 </div>
                             </div>
                             
-                            <Link to='/festivals' className='btn-more type2'>
+                            <Link to='/places/festival' className='btn-more type2'>
                                 축제 보러가기
                             </Link> 
                         </div>

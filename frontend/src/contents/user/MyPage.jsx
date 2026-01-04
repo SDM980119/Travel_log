@@ -1,15 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Virtual, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import WishToggleButton from '../../components/common/WishToggleButton';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './MyPage.css';
+import { mypage } from '../../API/user';
 
 const MyPage = () => {
   const slides = Array.from({ length: 8 })
+  const [user, setUser] = useState(null)
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+
+    if (!token) {
+      navigate("/login", {
+        state: {
+          message: "로그인이 필요한 서비스입니다.",
+          from: location.pathname,
+        },
+        replace: true,
+      });
+    }
+  }, []);
+
+    useEffect(() => {
+      mypage()
+      .then(res => {
+        console.log("응답데이터", res.data);
+        setUser(res.data)})
+      .catch(err =>  console.error(err))
+    }, [])
+
   const recommendations = [
     { id: 1, title: 'Jeju', subTitle: '스누피가든', address: '제주특별자치도 제주시 구좌읍 금백조로 930', holiday: '연중무휴', facilities: '가든 하우스 / 야외가든' },
     { id: 2, title: 'Udo', subTitle: '검멀레해변', address: '제주특별자치도 제주시 우도면 연평리', holiday: '기상 상황에 따라 다름', facilities: '보트 체험 / 산책로' },
@@ -21,12 +49,12 @@ const MyPage = () => {
       <div className="mypage-inner">
         <section className="profile-wrap">
           <div className="profile-inner">
-            <div className="img-wrap" />
-            <Link to="/MyPage" className="edit-profile">회원정보 수정</Link>
+            <img className="img-wrap" src={`http://localhost:5000${user?.user_img}`}/>
+            <Link to="/MyPageModify" className="edit-profile">회원정보 수정</Link>
           </div>
           <div className="text-wrap">
             <span className="badge">닉네임</span>
-            <span className="username">1234jeju</span>
+            <span className="username">{user?.username}</span>
           </div>
         </section>
 

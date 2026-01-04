@@ -3,7 +3,7 @@ import './App.css'
 import './common.css'
 
 import { useEffect, useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Header from './components/common/Header'
 import Home from './contents/Home'
 import PlaceDetailPage from './contents/place/PlaceDetailPage'
@@ -20,6 +20,7 @@ import MyPage from './contents/user/MyPage'
 import TopButton from './components/common/TopButton'
 import Footer from './components/common/Footer'
 import ScrollHandler from './components/common/ScrollHandler'
+import MyPageModify from './contents/user/MyPageModify'
 
 function App() {
   const [message, setMessage] = useState('')
@@ -30,6 +31,8 @@ function App() {
       .then(data => setMessage(data.message))
       .catch(() => {})
   }, [])
+  const routerLocation = useLocation();
+
 
   return (
     <div className="App">
@@ -38,7 +41,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/places/:type" element={<PlaceDetailPage />} />
+        <Route path="/places/:type" element={<PlaceListPage key={routerLocation.pathname} />} />
         <Route path="/PlaceList" element={<PlaceListPage />} />
         <Route path="/PlaceDetail" element={<PlaceDetailPage />} />
 
@@ -54,6 +57,7 @@ function App() {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/MyPage" element={<MyPage />} />
+        <Route path="/MyPageModify" element={<MyPageModify />} />
       </Routes>
 
       <TopButton />
