@@ -25,12 +25,12 @@ import MyPageModify from './contents/user/MyPageModify'
 function App() {
   const [message, setMessage] = useState('')
 
-  useEffect(() => {
-    fetch('http://localhost:5000/')
-      .then(res => res.json())
-      .then(data => setMessage(data.message))
-      .catch(() => {})
-  }, [])
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/')
+  //     .then(res => res.json())
+  //     .then(data => setMessage(data.message))
+  //     .catch(() => {})
+  // }, [])
   const routerLocation = useLocation();
 
 
@@ -40,10 +40,9 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/main" element={<Home />} />
         <Route path="/places/:type" element={<PlaceListPage key={routerLocation.pathname} />} />
-        <Route path="/PlaceList" element={<PlaceListPage />} />
-        <Route path="/PlaceDetail" element={<PlaceDetailPage />} />
+        <Route path="/Places/detail/:id" element={<PlaceDetailPage />} />
 
         <Route path="/review" element={<ReviewListPage />} />
         <Route path="/review/detail" element={<ReviewDetailPage />} />

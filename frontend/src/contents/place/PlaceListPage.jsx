@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from "react-router-dom";
+import { getPlaces } from "../../API/places";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Pagination } from "swiper/modules";
 
@@ -6,9 +9,6 @@ import "swiper/css/grid";
 import "swiper/css/pagination";
 import "./PlaceListPage.css";
 
-import React, { useEffect, useState } from 'react'
-import { useParams } from "react-router-dom";
-import { getPlaces } from "../../API/places";
 
 const PlaceListPage = () => {
   const { type } = useParams();
@@ -67,7 +67,8 @@ const PlaceListPage = () => {
           >
             {placeList.map(place => (
               <SwiperSlide key={place.id}>
-                <article className="card" onClick>
+                <article className="card"> 
+                  <Link to={`/places/detail/${place.id}`}>
                   <div className="card-img">
                     <img src={place.img} alt={place.title} />
                   </div>
@@ -76,6 +77,7 @@ const PlaceListPage = () => {
                     <h3>{place.title}</h3>
                     <p>{place.desc}</p>
                   </div>
+                </Link>
                 </article>
               </SwiperSlide>
             ))}
