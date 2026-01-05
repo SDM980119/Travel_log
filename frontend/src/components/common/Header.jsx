@@ -39,7 +39,7 @@ const Header = () => {
             <div className="header-wrap">
                 <div className="header-inner">
                     <h1 className="logo-wrap">
-                        <Link to="/" className="logo" aria-label="홈">
+                        <Link to="/main" className="logo" aria-label="홈">
                         <img src="/images/common/logo.png" alt="Travel Log - 여행로그 로고" />
                         </Link>
                     </h1>
@@ -108,7 +108,7 @@ const Header = () => {
                                                 <p>{user.username}</p>
                                             </li>
                                             <li>
-                                                <Link to="/" onClick={logout}>로그아웃</Link>
+                                                <Link to="/main" onClick={logout}>로그아웃</Link>
                                             </li>
                                             <li>
                                                 <Link to="/MyPage" onClick={closeAll}>마이페이지</Link>
@@ -180,17 +180,17 @@ const Header = () => {
 
                                 <ul className="header__util-list">
                                     <li>
-                                        <NavLink to="/places" className="gnb-link">
+                                        <NavLink to="/places/travel" className="gnb-link">
                                             여행지
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/activity" className="gnb-link">
+                                        <NavLink to="/places/activity" className="gnb-link">
                                             액티비티
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/festival" className="gnb-link">
+                                        <NavLink to="/places/festival" className="gnb-link">
                                             축제
                                         </NavLink>
                                     </li>

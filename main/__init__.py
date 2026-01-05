@@ -26,7 +26,7 @@ def create_app():
 
     # 블루프린트
     from .views import main_views, auth_views, place_views, user_views
-    app.register_blueprint(main_views.bp)
+    app.register_blueprint(main_views.bp, url_prefix='/api')
     app.register_blueprint(auth_views.bp, url_prefix='/api')
     app.register_blueprint(place_views.bp, url_prefix='/api')
     app.register_blueprint(user_views.bp, url_prefix='/api')
