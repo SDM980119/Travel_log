@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ReviewDetailPage.css';
 
 const ReviewDetailPage = () => {
   const navigate = useNavigate();
+
+  const [isWished, setIsWished] = useState(false);
+
+  const [likes, setLikes] = useState([
+    { count: 14, liked: false },
+    { count: 14, liked: false },
+  ]);
+
+  const toggleLike = (index) => {
+    setLikes((prev) =>
+      prev.map((item, i) =>
+        i === index
+          ? {
+              liked: !item.liked,
+              count: item.liked ? item.count - 1 : item.count + 1,
+            }
+          : item
+      )
+    );
+  };
+
   return (
     <>
       <div className="rd-container">
         <div className="rd-container-text">
           <h1>대관령 양떼목장</h1>
-          <img src="/images/common/icon_wish.png" alt="찜" />
+          <img
+            src={
+              isWished
+                ? '/images/review/icon-wish-active.png'
+                : '/images/review/icon-wish.png'
+            }
+            alt="찜"
+            onClick={() => setIsWished((prev) => !prev)}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
       </div>
 
@@ -28,8 +58,8 @@ const ReviewDetailPage = () => {
             <button
               className="write-review-btn"
               onClick={() => navigate('/review/write')}>
-                나도 리뷰 작성해보기
-              </button>
+              나도 리뷰 작성해보기
+            </button>
           </div>
 
           <div className="rd-comment">
@@ -40,9 +70,21 @@ const ReviewDetailPage = () => {
                 <span className="rd-comment-date">2025.12.11</span>
               </div>
               <p className="rd-comment-text">좋아요</p>
-              <div className="rd-comment-like">
-                <img src="/images/common/icon-thumb-up.png" className="rd-comment-like-icon" alt="추천" />
-                <span className="rd-comment-like-count">14</span>
+              <div
+                className="rd-comment-like"
+                onClick={() => toggleLike(0)}>
+                <img
+                  src={
+                    likes[0].liked
+                      ? '/images/common/icon-thumb-up-active.png'
+                      : '/images/common/icon-thumb-up.png'
+                  }
+                  className="rd-comment-like-icon"
+                  alt="추천"
+                />
+                <span className="rd-comment-like-count">
+                  {likes[0].count}
+                </span>
               </div>
             </div>
           </div>
@@ -55,22 +97,36 @@ const ReviewDetailPage = () => {
                 <span className="rd-comment-date">2025.12.11</span>
               </div>
               <p className="rd-comment-text">좋아요</p>
-              <div className="rd-comment-like">
-                <img src="/images/common/icon-thumb-up.png" className="rd-comment-like-icon" alt="추천" />
-                <span className="rd-comment-like-count">14</span>
+              <div
+                className="rd-comment-like"
+                onClick={() => toggleLike(1)}>
+                <img
+                  src={
+                    likes[1].liked
+                      ? '/images/common/icon-thumb-up-active.png'
+                      : '/images/common/icon-thumb-up.png'
+                  }
+                  className="rd-comment-like-icon"
+                  alt="추천"
+                />
+                <span className="rd-comment-like-count">
+                  {likes[1].count}
+                </span>
               </div>
             </div>
           </div>
+
           <div className="rd-comment-input">
             <div className="rd-comment-profile2"></div>
             <input type="text" placeholder="리뷰를 작성해주세요" />
             <button>작성</button>
           </div>
+
           <div className="rd-back-wrap">
-            <button className="rd-back-btn">추천 게시판 목록으로 돌아가기</button>
+            <button className="rd-back-btn">
+              추천 게시판 목록으로 돌아가기
+            </button>
           </div>
-
-
         </div>
       </div>
     </>

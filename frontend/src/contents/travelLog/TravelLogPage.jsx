@@ -1,80 +1,85 @@
-import React from 'react';
-import './TravelLogPage.css';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import Pagination from '../../components/common/Pagination';
 
 const TravelLogPage = () => {
   const navigate = useNavigate();
 
   const reviews = [
-    { id: 27, title: '게시글 제목', nickname: '글쓴이', date: '2025.12.11', like: 125 },
-    { id: 26, title: '게시글 제목', nickname: '글쓴이', date: '2025.12.11', like: 125 },
+    { id: 25, title: '게시글 제목', nickname: '글쓴이', date: '2025.12.11', like: 125 },
+    { id: 24, title: '게시글 제목', nickname: '글쓴이', date: '2025.12.11', like: 125 },
   ];
 
+  const [page, setPage] = useState(1);
+  const totalPages = 23; // 서버에서 받은 전체 페이지 수
+
   return (
-    <div className="review-page">
-      <div className="review-pic" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/review/mytravellogmain.png)` }}>
-        <h1>My Travellog</h1>
-        <div className="review-search-box">
-          <input type="text" />
-          <button>검색</button>
-        </div>
-      </div>
+        <div className="board-wrap">
+            <div className="board-header" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/review/mytravellogmain.png)` }}>
+                <h3 className='title'>Review</h3>
+                <form action="">
+                    <div className="search-wrap">
+                        <input type="text" />
+                        <button type='submit'>검색</button>
+                    </div>
+                </form>
+            </div>
 
-      <div className="review-content">
-        <table className="review-table">
-          <thead>
-            <tr>
-              <th className="col-no">순번</th>
-              <th className="col-title">제목</th>
-              <th className="col-nick">닉네임</th>
-              <th className="col-date">등록일</th>
-              <th className="col-like">추천수</th>
-            </tr>
-          </thead>
-          <tbody>
-            {reviews.map(item => (
-             <tr
-  key={item.id}
-  onClick={() => navigate(`/travelLog/${item.id}`)}
-  style={{ cursor:'pointer' }}
->
-                <td className="col-no">{item.id}</td>
-                <td className="title col-title">{item.title}</td>
-                <td className="col-nick">{item.nickname}</td>
-                <td className="col-date">{item.date}</td>
-                <td className="col-like">{item.like}</td>
-              </tr>
-            ))}
-            {Array.from({ length: 15 }).map((_, i) => (
-              <tr key={`empty-${i}`}>
-                <td className="col-no"></td>
-                <td className="col-title"></td>
-                <td className="col-nick"></td>
-                <td className="col-date"></td>
-                <td className="col-like"></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+            <div className="board__table-wrap">
+                <div className="board-inner">
+                    <table className="board__table">
+                        <colgroup>
+                            <col className="col-no mo-none" />
+                            <col className="col-title" />
+                            <col className="col-nick mo-none" />
+                            <col className="col-date" />
+                            <col className="col-like" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th className="mo-none">순번</th>
+                                <th>제목</th>
+                                <th className="mo-none">닉네임</th>
+                                <th>등록일</th>
+                                <th>추천수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {reviews.map(item => (
+                            <tr key={item.id} onClick={() => navigate(`/review/${item.id}`)}>
+                                <td className="mo-none">{item.id}</td>
+                                <td className="title"><Link to="review">{item.title}</Link></td>
+                                <td className="mo-none">{item.nickname}</td>
+                                <td>{item.date}</td>
+                                <td>{item.like}</td>
+                            </tr>
+                            ))}
+                            {Array.from({ length: 0 }).map((_, i) => (
+                            <tr key={`empty-${i}`}>
+                                <td colSpan={ 5 } style={{'text-align' : 'center'}}>등록된 리뷰가 없습니다.</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
 
-        <div className="review-write-btn-wrap">
-           <button
-      className="review-write-btn"
-      onClick={() => navigate('/travellog/write')}
-    >
-      글 작성하기
-    </button>
+                    <div className="btn-wrap">
+                        <button
+                            className="btn-write"
+                            onClick={() => navigate('/review/write')}
+                            >
+                                글 작성하기
+                        </button>
+                    </div>
+                    
+                    <Pagination
+                        page={page}
+                        totalPages={totalPages}
+                        onChange={(p) => setPage(p)}
+                    />
+                </div>
+            </div>
         </div>
-
-        <div className="pagination">
-          <span>{'<<'}</span>
-          <span>{'<'}</span>
-          <span className="active">1</span>
-          <span>{'>'}</span>
-          <span>{'>>'}</span>
-        </div>
-      </div>
-    </div>
   );
 };
 

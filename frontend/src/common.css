@@ -177,3 +177,130 @@ footer {}
 @media only screen and (max-width:768px) {
     .top-btn {right: 25px; bottom: 25px;}
 }
+
+/* board - 리뷰, 나의 여행로그 */
+.board-wrap {}
+.board-wrap .board-inner {width: 100%; max-width: 1250px; margin: 0 auto; padding: 0 0 70px; box-sizing: border-box;}
+
+.board-wrap .board-header {display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; max-width: 1250px; height: 290px; margin: 0 auto; background-position: center; background-size: cover; text-align: center; box-sizing: border-box;}
+.board-wrap .board-header .title {margin-bottom: 40px; font-family: 'Candal'; font-size: 64px; font-weight: 500; color: #0b2a63;}
+
+.board-wrap .board-header form {width: 380px;}
+.board-wrap .board-header form .search-wrap {display: flex; overflow: hidden; border: 1px solid #0b2a63; border-radius: 7px; background: #fff;}
+.board-wrap .board-header form .search-wrap input {flex: 1; min-width: 0; height: 40px; padding: 0 10px; font-size: 14px; box-sizing: border-box;}
+.board-wrap .board-header form .search-wrap button {flex-shrink: 0; width: 60px; height: 40px; border: none; background: #0b2a63; font-size: 14px; color: #fff;}
+
+.board-wrap .board__table-wrap {min-height: 400px; margin: 30px 0 0; box-sizing: border-box;}
+.board-wrap .board__table {width: 100%; border-collapse: collapse; table-layout: fixed;}
+
+.col-no {width: 7%;}
+.col-title {width: auto;}
+.col-nick {width: 8%;}
+.col-date {width: 10%;}
+.col-like {width: 7%;}
+
+.board-wrap .board__table tr {border-bottom: 1px solid #ddd;}
+.board-wrap .board__table th {padding: 18px 10px; background: #0b2a63; font-weight: 700; font-size: 16px; color: #fff; text-align: center; vertical-align: middle;}
+.board-wrap .board__table td {padding: 18px 10px; font-size: 16px; text-align: center; vertical-align: middle;}
+.board-wrap .board__table tbody tr:hover {background: #edf0f5;}
+
+.board-wrap .board__table td.title {white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;}
+.board-wrap .board__table td.title a:hover {text-decoration: underline; text-underline-offset: under;}
+
+.board-wrap .btn-wrap {display: flex; justify-content: flex-end; width: 100%; margin: 20px 0 0;}
+.board-wrap .btn-wrap .btn-write {padding: 8px 16px; border-radius: 4px; background: #0b2a63; font-size: 14px; color: #fff;}
+
+.board-wrap .pagination {display: flex; align-items: center; justify-content: center; width: 100%; margin-top: 50px;}
+.board-wrap .pagination button {font-size: 16px; color: #555;}
+.board-wrap .pagination button.number:hover,
+.board-wrap .pagination button.number.active {font-weight: 600; color: #0b2a63; text-decoration: underline; text-underline-offset: under;}
+.board-wrap .pagination button + button {margin: 0 0 0 20px;}
+.board-wrap .pagination button.arrow + button.arrow {margin: 0 0 0 7px;}
+.board-wrap .pagination button.arrow {width: 30px; height: 30px; border: 1px solid #ddd; border-radius: 100%; background: #EDF0F5; background-repeat: no-repeat; background-position: 53% 50%; box-sizing: border-box;}
+.board-wrap .pagination button.arrow.first {background-image: url('/public/images/common/pagination_last.png'); background-size: 10px 9px; transform: rotate(-180deg);}
+.board-wrap .pagination button.arrow.prev {background-image: url('/public/images/common/pagination_next.png'); background-size: 5px 9px; transform: rotate(-180deg);}
+.board-wrap .pagination button.arrow.next {background-image: url('/public/images/common/pagination_next.png'); background-size: 5px 9px;}
+.board-wrap .pagination button.arrow.last {background-image: url('/public/images/common/pagination_last.png'); background-size: 10px 9px;}
+.board-wrap .pagination .active {font-weight: bold; color: #000;}
+
+@media screen and (max-width: 1250px) {
+    .board-wrap .board-inner {padding: 0 35px 30px;}
+
+    .board-wrap .board-header {height: 250px; padding: 0 35px;}
+    .board-wrap .board-header .title {margin: 0 0 35px; font-size: 60px;}
+    .board-wrap .board-header form {max-width: 350px;}
+    .board-wrap .board-header form .search-wrap input {height: 38px;}
+    .board-wrap .board-header form .search-wrap button {width: 58px; height: 38px;}
+
+    .board-wrap .board__table-wrap {min-height: 250px; margin: 25px 0 0;}
+    .board-wrap .board__table th {padding: 16px 8px;}
+    .board-wrap .board__table td {padding: 16px 8px;}
+
+    .board-wrap .btn-wrap .btn-write {padding: 6px 14px;}
+
+    .board-wrap .pagination button {font-size: 15px;}
+    .board-wrap .pagination button.arrow {width: 28px; height: 28px;}
+}
+
+@media screen and (max-width: 1024px) {
+    .board-wrap .board-inner {padding: 0 30px 45px;}
+
+    .board-wrap .board-header {height: 200px; padding: 0 30px;}
+    .board-wrap .board-header .title {margin: 0 0 30px; font-size: 55px;}
+    .board-wrap .board-header form {width: 300px;}
+    .board-wrap .board-header form .search-wrap input {height: 36px;}
+    .board-wrap .board-header form .search-wrap button {width: 56px; height: 36px;}
+
+    .board-wrap .board__table-wrap {min-height: 200px; margin: 20px 0 0;}
+
+    .col-no {width: 8%;}
+    .col-nick {width: 18%;}
+    .col-date {width: 22%;}
+    .col-like {width: 10%;}
+
+    .board-wrap .board__table th {padding: 14px 6px;}
+    .board-wrap .board__table td {padding: 14px 6px;}
+
+    .board-wrap .btn-wrap .btn-write {padding: 6px 12px;}
+
+    .board-wrap .pagination button {font-size: 14px;}
+    .board-wrap .pagination button.arrow {width: 26px; height: 26px;}
+}
+
+@media screen and (max-width: 768px) {
+    .mo-none {display: none;}
+
+    .board-wrap .board-inner {padding: 0 15px 60px;}
+
+    .board-wrap .board-header {height: 150px; padding: 0 15px;}
+    .board-wrap .board-header .title {margin: 0 0 25px; font-size: 35px;}
+    .board-wrap .board-header form .search-wrap input {height: 25px; font-size: 12px;}
+    .board-wrap .board-header form .search-wrap button {width: 50px; height: 25px; font-size: 12px;}
+
+    .board-wrap .board__table-wrap {min-height: 150px;}
+
+    .board-wrap .board__table th {padding: 12px 6px; font-size: 12px;}
+    .board-wrap .board__table td {padding: 12px 6px; font-size: 12px;}
+    .board-wrap .board__table td.title {padding: 12px 10px;}
+    
+    .board-wrap .btn-wrap .btn-write {padding: 5px 10px; font-size: 12px;}
+
+    .board-wrap .pagination button {font-size: 13px;}
+    .board-wrap .pagination button.arrow {width: 24px; height: 24px;}
+    .board-wrap .pagination button + button {margin: 0 0 0 15px;}
+}
+
+@media screen and (max-width: 480px) {
+    .board-wrap .board-header .title {margin: 0 0 20px; font-size: 30px;}
+    .board-wrap .board-header form {width: 200px;}
+
+    .col-date {width: 25%;}
+    .col-like {width: 16%;}
+
+    .board-wrap .board__table th {padding: 10px 6px;}
+    .board-wrap .board__table td {padding: 10px 6px;}
+    .board-wrap .board__table td.title {padding: 10px;}
+
+    .board-wrap .pagination button {font-size: 12px;}
+    .board-wrap .pagination button.arrow {width: 22px; height: 22px;}
+}
