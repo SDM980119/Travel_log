@@ -149,7 +149,7 @@
 .place-wrap .place-inner .recommend-wrap .recommended-inner .item:nth-of-type(1) {padding-top: 0;}
 .place-wrap .place-inner .recommend-wrap .recommended-inner .item .img-wrap img {width: 190px; height: 115px; flex-shrink: 0; object-fit: cover;}
 .place-wrap .place-inner .recommend-wrap .recommended-inner .item .item-content {flex: 1; min-width: 0; text-align: left;}
-.place-wrap .place-inner .recommend-wrap .recommended-inner .item .item-content .item-title {margin-top: -5px; margin-bottom: 15px; font-family: 'Candal', cursive; font-size: 25px; font-weight: bold; text-align: left;}
+.place-wrap .place-inner .recommend-wrap .recommended-inner .item .item-content .item-title {margin-top: -5px; margin-bottom: 15px;  font-size: 25px; font-weight: bold; text-align: left;}
 .place-wrap .place-inner .recommend-wrap .recommended-inner .item .item-content .item-details {font-size: 16px; color: #666; line-height: 1.4; text-align: left;}
 .place-wrap .place-inner .recommend-wrap .recommended-inner .item .item-content .item-details p {display: flex; align-items: flex-start;}
 .place-wrap .place-inner .recommend-wrap .recommended-inner .item .item-content .item-details p + p {margin: 5px 0 0;}

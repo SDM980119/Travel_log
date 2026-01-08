@@ -12,9 +12,12 @@ import { mypage } from '../../API/user';
 const MyPage = () => {
   const slides = Array.from({ length: 8 })
   const [user, setUser] = useState(null)
+  const [recommend, setRecommend] = useState([])
 
   const navigate = useNavigate();
   const location = useLocation();
+  const IMAGE_BASE_URL = "http://localhost:5000/"
+
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
@@ -34,8 +37,10 @@ const MyPage = () => {
       mypage()
       .then(res => {
         console.log("응답데이터", res.data);
-        setUser(res.data)})
-      .catch(err =>  console.error(err))
+        setUser(res.data.user)
+        setRecommend(res.data.recommend)
+      })
+      .catch(err => console.error(err))
     }, [])
 
   const recommendations = [
@@ -165,41 +170,40 @@ const MyPage = () => {
 
         <section className="mypage-section recommend">
           <h3 className="mypage-section-title">추천 여행지</h3>          
-          {["성산일출봉", "제주 4.3 평화 공원", "카멜리아 힐"].map(
-            (tag, i) => (
-                <div className="item" key={i}>
+          {recommend.map((item) => (
+                <div className="item" key={item.id}>
                     <div className="img-wrap">
                         <img
-                        src="/images/placedetail/snoopt1.jpg"
+                        src={IMAGE_BASE_URL + item.image[0]}
                         alt=""
                         />
                     </div>
 
                     <div className="item-content">
-                        <h2 className="item-title">Jeju</h2>
+                        <h2 className="item-title">{item.name}</h2>
                         <div className="item-details">
                             <p>
                                 <span className="tit">주소 :</span>
                                 &nbsp;
-                                <span className="txt">제주특별자치도 제주시 구좌읍 금백조로 930</span>
+                                <span className="txt">{item.address}</span>
                             </p>
                             <p>
                                 <span className="tit">휴일 :</span>
                                 &nbsp;
-                                <span className="txt">연중무휴</span>
+                                <span className="txt">{item.closed_days}</span>
                             </p>
                             <p>
                                 <span className="tit">이용가능시설 :</span>
                                 &nbsp;
-                                <span className="txt">카드 하우스 / 야외카드</span>
+                                <span className="txt">{item.amenities}</span>
                             </p>
                         </div>
                     </div>
 
                     <div className="item-actions">
-                        <span className="item-tag">{tag}</span>
+                        <span className="item-tag"></span>
                         <WishToggleButton className="heart-btn" />
-                        <button className="detail-btn">
+                        <button className="detail-btn" onClick={() => navigate(`/places/detail/${item.id}`)}>
                             상세 정보 보러가기
                         </button>
                     </div>

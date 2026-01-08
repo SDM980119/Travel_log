@@ -153,7 +153,7 @@
 .recommend .item:nth-of-type(1) {padding-top: 0;}
 .recommend .item .img-wrap img {width: 190px; height: 115px; flex-shrink: 0; object-fit: cover;}
 .recommend .item .item-content {flex: 1; min-width: 0; text-align: left;}
-.recommend .item .item-content .item-title {margin-top: -5px; margin-bottom: 15px; font-family: 'Candal', cursive; font-size: 20px; font-weight: bold; text-align: left;}
+.recommend .item .item-content .item-title {margin-top: -5px; margin-bottom: 15px; font-size: 20px; font-weight: bold; text-align: left;}
 .recommend .item .item-content .item-details {font-size: 16px; color: #666; line-height: 1.4; text-align: left;}
 .recommend .item .item-content .item-details p {display: flex; align-items: flex-start;}
 .recommend .item .item-content .item-details p + p {margin: 5px 0 0;}
