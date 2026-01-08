@@ -2313,7 +2313,7 @@
         "parking_available": "가능",
         "parking_fee": "무료",
         "requires_reservation": "불필요",
-        "amenities": "",
+        "amenities": "미디어아트 전시 공간, ARTE TIVA, 기념품샵",
         "description": "국내 최대 몰입형 미디어아트 전시관 아르떼뮤지엄. 아르떼뮤지엄은 코엑스 ‘WAVE’ 작품으로 유명한 세계 수준의 디지털 디자인 컴퍼니 d’strict가 선보이는 국내 최대 규모의 몰입형 미디어아트 전시관이다. 스피커 제조 공장으로 사용되던 바닥 면적 1,400평, 최대 10M에 육박하는 웅장한 공간에서는 빛과 소리가 만들어 낸 16개의 다채로운 미디어아트 전시가 펼쳐진다.",
         "image_urls": ["static/place_img/J아르떼뮤지엄1.jpg","static/place_img/J아르떼뮤지엄2.jpg","static/place_img/J아르떼뮤지엄3.jpg","static/place_img/J아르떼뮤지엄4.jpg"],
         "latitude": 33.3937,

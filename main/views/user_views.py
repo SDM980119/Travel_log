@@ -4,21 +4,32 @@ import uuid
 from flask import Blueprint, jsonify,request, jsonify, current_app
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from werkzeug.utils import secure_filename
+from sqlalchemy.sql import func
 from main import db
 import json
 
 
 from main.models import User, Places
+
 bp = Blueprint("mypage", __name__)
 @bp.route("/mypage", methods=["GET"])
 @jwt_required()
 def mypage():
     userid = get_jwt_identity()
-
     user = User.query.get(userid)
     if not user:
         return jsonify({"message":"회원이 아닙니다."})
+
+    places =(
+        Places.query
+        .filter(Places.type == "travel")
+        .order_by(func.random())
+        .limit(3)
+        .all()
+    )
+
     return jsonify({
+        "user":{
             "id":user.id,
             "userid":user.userid,
             "username":user.username,
@@ -26,6 +37,20 @@ def mypage():
             "email":user.email,
             "phone":user.phone,
             "user_img": user.profile_image
+        },
+        "recommend": [
+            {
+                "id": p.id,
+                "name": p.name,
+                "address": p.address,
+                "closed_days": p.closed_days,
+                "amenities": p.amenities,
+                "image": json.loads(p.image_urls)
+            }
+            for p in places
+        ]
+
+
     }), 200
 
 ALLOWED_EXT = {'png', 'jpg', 'jpeg', 'gif'}
