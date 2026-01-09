@@ -1,8 +1,5 @@
-from tkinter import Place
-
 from flask import Blueprint, request, jsonify
 from main.models import Places
-from main import db
 import json
 from sqlalchemy.sql import func
 

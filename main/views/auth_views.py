@@ -19,7 +19,7 @@ from main.schemas.login_schema import LoginSchema
 bp = Blueprint('auth', __name__)
 
 ALLOWED_EXT = {'png', 'jpg', 'jpeg', 'gif'}
-DEFAULT_IMAGE = 'default.jpg'
+DEFAULT_IMAGE = "user_img/default.jpg"
 
 @bp.route("/signUp", methods=["POST"])
 def signUp():
@@ -60,9 +60,12 @@ def signUp():
             "static/user_img",
             image_filename
         )
+        os.makedirs(os.path.dirname(upload_path), exist_ok=True)
         image.save(upload_path)
+
+        profile_image = f"user_img/{image_filename}"
     else:
-        image_filename = DEFAULT_IMAGE
+        profile_image = DEFAULT_IMAGE
     user = User(
         userid = data['userid'],
         username = data['username'],
@@ -70,7 +73,7 @@ def signUp():
         email = data['email'],
         phone = data['phone'],
         gender = data['gender'],
-        profile_image = image_filename
+        profile_image = profile_image
         )
 
     try:
@@ -147,11 +150,12 @@ def login():
 @bp.route("/me", methods=["GET"])
 @jwt_required()
 def me():
-    print("Authorization:", request.headers.get("Authorization"))
-    print("JWT identity:", get_jwt_identity())
 
     user_id = int(get_jwt_identity())
     user = User.query.get(user_id)
+
+    if not user:
+        return jsonify({"message":"유효하지 않은 사용자"}),401
 
     return jsonify({
         "userid": user.userid,

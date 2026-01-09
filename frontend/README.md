@@ -1,70 +1,140 @@
-# Getting Started with Create React App
+# 여행 로그 웹사이트 (Travel Log Website)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+대한민국의 다양한 여행지를 소개하고, 사용자가 여행 정보를 쉽게 탐색할 수 있도록 제작한 웹 서비스입니다.
+React와 Python을 기반으로 개발되었으며, 여행 정보를 안내하는 챗봇 기능을 포함하고 있습니다.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📌 프로젝트 개요
 
-### `npm start`
+* **프로젝트명**: Travel Log Website
+* **목적**: 국내 여행지 정보를 한눈에 제공하고 사용자 경험을 향상시키는 여행 로그 플랫폼 제작
+* **대상 지역**: 대한민국 여행지 한정
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠 사용 기술 스택
 
-### `npm test`
+### Frontend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* React
+* JavaScript
+* HTML / CSS
 
-### `npm run build`
+### Backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Python
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 기타
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Git / GitHub
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ✨ 주요 기능
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* 대한민국 여행지 정보 제공
+* 지역별 여행지 탐색 기능
+* 사용자 친화적인 UI/UX 구성
+* 여행 정보 안내 **챗봇 기능** 제공
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🤖 챗봇 기능
 
-## Learn More
+* 여행지 관련 기본 정보 제공
+* 사용자의 질문에 따라 여행 정보 응답
+* 국내 여행지 데이터 기반 응답
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📂 프로젝트 특징
 
-### Code Splitting
+* React를 활용한 컴포넌트 기반 UI 설계
+* Python을 이용한 서버 및 데이터 처리
+* GitHub를 활용한 버전 관리
+* 국내 여행지에 집중한 명확한 서비스 콘셉트
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🚀 향후 개선 사항
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* 여행지 데이터 확장
+* 사용자 리뷰 및 즐겨찾기 기능 추가
+* 챗봇 응답 정확도 및 기능 고도화
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📎 기타
 
-### Advanced Configuration
+본 프로젝트는 학습 및 포트폴리오용으로 제작되었습니다.
+# 여행 로그 웹사이트 (Travel Log Website)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+대한민국의 다양한 여행지를 소개하고, 사용자가 여행 정보를 쉽게 탐색할 수 있도록 제작한 웹 서비스입니다.
+React와 Python을 기반으로 개발되었으며, 여행 정보를 안내하는 챗봇 기능을 포함하고 있습니다.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📌 프로젝트 개요
 
-### `npm run build` fails to minify
+* **프로젝트명**: Travel Log Website
+* **목적**: 국내 여행지 정보를 한눈에 제공하고 사용자 경험을 향상시키는 여행 로그 플랫폼 제작
+* **대상 지역**: 대한민국 여행지 한정
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 🛠 사용 기술 스택
+
+### Frontend
+
+* React
+* JavaScript
+* HTML / CSS
+
+### Backend
+
+* Python
+
+### 기타
+
+* Git / GitHub
+
+---
+
+## ✨ 주요 기능
+
+* 대한민국 여행지 정보 제공
+* 지역별 여행지 탐색 기능
+* 사용자 친화적인 UI/UX 구성
+* 여행 정보 안내 **챗봇 기능** 제공
+
+---
+
+## 🤖 챗봇 기능
+
+* 여행지 관련 기본 정보 제공
+* 사용자의 질문에 따라 여행 정보 응답
+* 국내 여행지 데이터 기반 응답
+
+---
+
+## 📂 프로젝트 특징
+
+* React를 활용한 컴포넌트 기반 UI 설계
+* Python을 이용한 서버 및 데이터 처리
+* GitHub를 활용한 버전 관리
+* 국내 여행지에 집중한 명확한 서비스 콘셉트
+
+---
+
+## 🚀 향후 개선 사항
+
+* 여행지 데이터 확장
+* 사용자 리뷰 및 즐겨찾기 기능 추가
+* 챗봇 응답 정확도 및 기능 고도화
+
+---
+
+## 📎 기타
+
+본 프로젝트는 학습 및 포트폴리오용으로 제작되었습니다.

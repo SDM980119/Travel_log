@@ -131,7 +131,16 @@ def mypage_delete():
     if not user:
         return jsonify({"message":"회원이 아닙니다."})
 
-    # 유저가 작성한 모든 글 삭제
+    if user.profile_image and user.profile_image != "user_img/default.png":
+        image_path = os.path.join(
+            current_app.root_path,
+            "static",
+            user.profile_image
+        )
+
+        if os.path.exists(image_path):
+            os.remove(image_path)
+
     db.session.delete(user)
     db.session.commit()
 

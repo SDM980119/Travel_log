@@ -5,9 +5,16 @@ const ReviewWritePage = () => {
   const fileInputRef = useRef(null);
   const [images, setImages] = useState([]);
 
+  const [form, setForm] = useState({
+    title:"",
+    content:"",
+    image:""
+  })
+
   const photoUpload = () => {
     fileInputRef.current?.click();
   };
+
 
   const photoChange = (e) => {
     const files = Array.from(e.target.files);
@@ -44,7 +51,7 @@ const ReviewWritePage = () => {
           <div className="board__form-content">
             <div className="board__form-section">
               <label htmlFor="place">어떤 장소를 여행하셨나요?</label>
-              <input id="place" type="text" placeholder="장소를 입력해주세요" />
+              <input id="place" type="text" placeholder="장소를 입력해주세요"  value={form.title} onChange={(e) => setForm({...form, title : e.target.value})}/>
             </div>
 
             <div className="board__form-section">
@@ -52,6 +59,8 @@ const ReviewWritePage = () => {
               <textarea
                 id="review"
                 placeholder="여행에 대한 솔직한 후기를 남겨주세요"
+                value={FormData}
+                onChange={(e) => setForm({...form, content:e.target.value})}
               />
             </div>
 

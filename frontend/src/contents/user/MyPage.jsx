@@ -43,12 +43,6 @@ const MyPage = () => {
       .catch(err => console.error(err))
     }, [])
 
-  const recommendations = [
-    { id: 1, title: 'Jeju', subTitle: '스누피가든', address: '제주특별자치도 제주시 구좌읍 금백조로 930', holiday: '연중무휴', facilities: '가든 하우스 / 야외가든' },
-    { id: 2, title: 'Udo', subTitle: '검멀레해변', address: '제주특별자치도 제주시 우도면 연평리', holiday: '기상 상황에 따라 다름', facilities: '보트 체험 / 산책로' },
-    { id: 3, title: 'Seogwipo', subTitle: '천지연폭포', address: '제주특별자치도 서귀포시 남성중로 2-15', holiday: '연중무휴', facilities: '야간 경관 조명 / 산책로' }
-  ]
-
   return (
     <div className="mypage-wrap">
       <div className="mypage-inner">

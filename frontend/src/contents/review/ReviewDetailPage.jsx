@@ -10,7 +10,7 @@ const ReviewDetailPage = () => {
   const [likes, setLikes] = useState([
     { count: 14, liked: false },
     { count: 14, liked: false },
-  ]);
+  ]); 
 
   const toggleLike = (index) => {
     setLikes((prev) =>
