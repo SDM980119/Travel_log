@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getPlaceId } from "../../API/places";
 import WishToggleButton from '../../components/common/WishToggleButton';
-import "./PlaceDetailPage.css";
 
 const PlaceDetailPage = () => {
     const { id } = useParams()
@@ -191,14 +190,6 @@ const PlaceDetailPage = () => {
                                     </div>
                                 )
                             )}
-
-                            <div className="pagination">
-                                <button>&lt;&lt;</button>
-                                <button>&lt;</button>
-                                <button className="current">1</button>
-                                <button>&gt;</button>
-                                <button>&gt;&gt;</button>
-                            </div>
                         </div>
                     </div>
                 </div>

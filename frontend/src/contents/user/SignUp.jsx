@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GENDER } from '../../constants/enums';
 import { check, signUp } from '../../API/auth';
-import './SignUp.css';
+import './user.css';
 
 const SignUp = () => {
   const [form, setForm] = useState({

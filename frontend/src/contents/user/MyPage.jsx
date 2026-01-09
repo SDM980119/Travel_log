@@ -6,7 +6,7 @@ import WishToggleButton from '../../components/common/WishToggleButton';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import './MyPage.css';
+import './user.css';
 import { mypage } from '../../API/user';
 
 const MyPage = () => {

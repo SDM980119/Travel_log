@@ -1,5 +1,112 @@
-@charset "utf-8";
+/* 로그인 페이지 */
+.login-wrap .login-inner {display: flex; width: 100%; max-width: 1250px; height: calc(100vh - 93px); margin: 0 auto; box-sizing: border-box;}
+.login-wrap .login-inner .bg-wrap {width: 55%; background-image: url('/public/images/login/login_bg.png'); background-repeat: no-repeat; background-size: cover; background-position: right;}
+.login-wrap .login-inner .login__form-wrap {display: flex; flex-direction: column; align-items: center; justify-content: center; width: 50%; padding: 0 6% 0 0; background-color: #ffffff; box-sizing: border-box;}
+.login-wrap .login-inner .login__form-wrap form {width: 280px;}
+.login-wrap .login-inner .login__form-wrap form .logo {display: block; width: 160px; margin: 0 auto;}
+.login-wrap .login-inner .login__form-wrap form .text {display: block; width: 100%; margin: 20px 0 0; font-size: 12px; line-height: 18px; color: #696969; text-align: center;} 
+.login-wrap .login-inner .login__form-wrap form .login-input {width: 100%; height: 40px; padding: 0 12px; border: 1px solid #949494; border-radius: 7px; font-size: 14px; color: #949494; box-sizing: border-box;}
+.login-wrap .login-inner .login__form-wrap form .login-input:first-of-type {margin: 40px 0 0;}
+.login-wrap .login-inner .login__form-wrap form .login-input + .login-input {margin: 12px 0 0;}
+.login-wrap .login-inner .login__form-wrap form .btn-login {width: 100%; height: 48px; background-color: #081E5A; border: none; border-radius: 7px; color: #ffffff; font-size: 14px; margin: 20px 0 0;}
+.login-wrap .login-inner .login__form-wrap .signup {margin: 30px 0 0; font-size: 12px; color: #949494;}
+.login-wrap .login-inner .login__form-wrap .signup:hover {text-decoration: underline; text-underline-position: under;}
 
+@media (max-width: 1440px) {
+
+}
+
+@media (max-width: 1250px) {
+    .login-wrap .login-inner {height: calc(100vh - 78px);}
+    .login-wrap .login-inner .login__form-wrap {padding: 0 11% 0 0;}
+    .login-wrap .login-inner .login__form-wrap form .logo {width: 160px;}
+    .login-wrap .login-inner .login__form-wrap form .login-input {height: 38px; border-radius: 7px;}
+    .login-wrap .login-inner .login__form-wrap form .login-input:first-of-type {margin: 35px 0 0;}
+    .login-wrap .login-inner .login__form-wrap form .login-input + .login-input {margin: 10px 0 0;}
+    .login-wrap .login-inner .login__form-wrap form .btn-login {height: 42px; border-radius: 6px;}
+    .login-wrap .login-inner .login__form-wrap .signup {margin: 25px 0 0;}
+}
+
+@media (max-width: 1024px) {
+    .login-wrap .login-inner .bg-wrap {background-size: auto 100%;}
+    .login-wrap .login-inner .login__form-wrap form .logo {width: 140px;}
+    .login-wrap .login-inner .login__form-wrap form .text {margin: 15px 0 0;}
+    .login-wrap .login-inner .login__form-wrap form .login-input {height: 35px; border-radius: 6px;}
+    .login-wrap .login-inner .login__form-wrap form .login-input:first-of-type {margin: 30px 0 0;}
+    .login-wrap .login-inner .login__form-wrap form .btn-login {height: 40px; border-radius: 5px;}
+    .login-wrap .login-inner .login__form-wrap .signup {margin: 20px 0 0;}
+}
+
+@media (max-width: 768px) {
+    .login-wrap .login-inner {flex-direction: column-reverse; height: auto;}
+    .login-wrap .login-inner .bg-wrap {display: none;}
+    .login-wrap .login-inner .login__form-wrap {width: 100%; height: calc(100vh - 150px); padding: 0 15px;}
+    .login-wrap .login-inner .login__form-wrap form {width: 100%; max-width: 320px;}
+    .login-wrap .login-inner .login__form-wrap form .logo {width: 130px;}
+    .login-wrap .login-inner .login__form-wrap form .login-input {border-radius: 5px; font-size: 12px;}
+    .login-wrap .login-inner .login__form-wrap form .login-input:first-of-type {margin: 25px 0 0;}
+    .login-wrap .login-inner .login__form-wrap form .btn-login {font-size: 12px;}
+    .login-wrap .login-inner .login__form-wrap .signup {margin: 15px 0 0;}
+}
+
+@media (max-width: 480px) {
+    .login-wrap .login-inner .login__form-wrap form .logo {width: 125px;}
+    .login-wrap .login-inner .login__form-wrap form .text {margin: 10px 0 0;}
+}
+
+/* 회원가입 페이지 */
+.signup-wrap .signup-inner {display: flex; width: 100%; max-width: 1250px; margin: 0 auto;}
+.signup-wrap .signup-inner .signup-item {display: flex; flex-direction: column; align-items: center; justify-content: center; width: 50%; padding: 50px 0; background-color: #fff;}
+
+.signup-wrap .signup-inner .signup-item .profile {text-align: center;}
+.signup-wrap .signup-inner .signup-item .profile .img-wrap {width: 90px; height: 90px; border-radius: 50%; border: 1px solid #949494; margin: 0 auto 10px; overflow: hidden;}
+.signup-wrap .signup-inner .signup-item .profile .img-wrap img{width: 100%; height: 100%; object-fit: cover;}
+
+.signup-wrap .signup-inner .signup-item .signup-form {width: 280px; margin: 30px 0 0;}
+.signup-wrap .signup-inner .signup-item .signup-form .signup-input {width: 100%; height: 40px; margin: 12px 0 0; padding: 0 12px; border: 1px solid #949494; border-radius: 8px; font-size: 14px; color: #949494; box-sizing: border-box;}
+.signup-wrap .signup-inner .signup-item .signup-form .signup-input:first-child {margin: 0;}
+.signup-wrap .signup-inner .signup-item .signup-form .signup-submit-button {width: 100%; height: 48px; margin: 20px 0 0; background-color: #081E5A; border: none; border-radius: 8px; color: #fff; font-size: 14px;}
+
+.signup-wrap .signup-inner .signup-item .text {margin: 30px 0 0; font-size: 12px; color: #949494; cursor: pointer;}
+.signup-wrap .signup-inner .signup-item .text:hover {text-decoration: underline; text-underline-position: under;}
+
+.signup-wrap .signup-inner .bg-wrap {width: 50%; background-image: url('/public/images/login/signup_bg.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;}
+
+@media (max-width: 1440px) {
+    
+}
+@media (max-width: 1250px) {
+    .signup-wrap .signup-inner .signup-item .profile .img-wrap {width: 80px; height: 80px;}
+
+    .signup-wrap .signup-inner .signup-item .signup-form {margin: 25px 0 0;}
+    .signup-wrap .signup-inner .signup-item .signup-form .signup-input {height: 38px; margin: 12px 0 0; border-radius: 7px;}
+    .signup-wrap .signup-inner .signup-item .signup-form .signup-submit-button {height: 42px; border-radius: 7px;}
+    .signup-wrap .signup-inner .signup-item .text {margin: 25px 0 0;}
+}
+@media (max-width: 1024px) {
+    .signup-wrap .signup-inner .signup-item .profile .img-wrap {width: 70px; height: 70px;}
+
+    .signup-wrap .signup-inner .signup-item .signup-form {margin: 20px 0 0;}
+    .signup-wrap .signup-inner .signup-item .signup-form .signup-input {height: 36px; margin: 10px 0 0; border-radius: 6px;}
+    .signup-wrap .signup-inner .signup-item .signup-form .signup-submit-button {height: 40px; border-radius: 6px;}
+    .signup-wrap .signup-inner .signup-item .text {margin: 20px 0 0;}
+}
+@media (max-width: 768px) {
+    .signup-wrap .signup-inner {flex-direction: column; height: auto;}
+    .signup-wrap .signup-inner .signup-item {width: 100%; padding: 40px 15px;}
+    .signup-wrap .signup-inner .signup-item .signup-form {width: 100%; max-width: 320px;}
+    .signup-wrap .signup-inner .signup-item .signup-form {margin: 15px 0 0;}
+    .signup-wrap .signup-inner .signup-item .signup-form .signup-input {height: 34px; margin: 8px 0 0; border-radius: 5px; font-size: 12px;}
+    .signup-wrap .signup-inner .signup-item .signup-form .signup-submit-button {margin: 15px 0 0; border-radius: 5px; font-size: 12px;}
+    .signup-wrap .signup-inner .signup-item .text {margin: 15px 0 0;}
+
+    .signup-wrap .signup-inner .bg-wrap {display: none;}
+}
+@media (max-width: 480px) {
+    .signup-wrap .signup-inner .signup-item .text {margin: 10px 0 0;}
+}
+
+/* 마이페이지 */
 .mypage-wrap {overflow-x: hidden; width: 100%;}
 .mypage-wrap .mypage-inner {width: 100%; max-width: 1250px; margin: 0 auto;}
 
@@ -210,3 +317,16 @@
     .recommend .pagination button {padding: 3px 5px; font-size: 14px;}
     .recommend .pagination .current {font-size: 14px;}
 }
+
+/* 회원정보 수정 페이지 */
+.mypage-modify-profile {width: 100%; height: 250px; background-color: #6E95D0; display: flex; justify-content: center; position: relative; font-family: 'Inter', sans-serif;}
+.mypage-modify-profile-inner {position: absolute; bottom: -90px; display: flex; flex-direction: column; align-items: center;}
+.mypage-modify-profile-img {width: 180px; height: 180px; border: 1px solid #DBDBDB; border-radius: 50%; background-color: #ffffff; }
+.mypage-profile-text {margin-top: 14px; color: #949494; cursor: pointer; text-decoration: underline; font-family: 'Inter', sans-serif;}
+.mypage-modify-wrap {width: 100%; display: flex; justify-content: center; margin-top: 140px;}
+.mypage-modify-form {width: 360px; display: flex; flex-direction: column; gap: 14px; padding: 0 20px; box-sizing: border-box;}
+.mypage-modify-form input {width: 100%; height: 44px; padding: 30px 14px; color: #949494; border: 1px solid #081E5A; border-radius: 6px; font-size: 20px; box-sizing: border-box; font-family: 'Inter', sans-serif;}
+.mypage-modify-form input::placeholder {font-family: 'Inter', sans-serif;}
+.mypage-btn-group {display: flex; justify-content: space-between; margin-top: 20px;}
+.mypage-btn-group button {width: 32%; height: 48px; margin-bottom: 20px; background-color: #081E5A; color: #ffffff; border: none; border-radius: 7px; font-size: 14px; cursor: pointer; font-family: 'Inter', sans-serif;}
+@media (max-width: 768px) {.mypage-modify-profile {height: 180px;}.mypage-modify-profile-img {width: 120px; height: 120px;}.mypage-modify-profile-inner {bottom: -60px;}.mypage-modify-wrap {margin-top: 100px;}.mypage-modify-form {width: 100%;}.mypage-btn-group {flex-direction: column; gap: 10px;}.mypage-btn-group button {width: 100%; margin-bottom: 0;}}

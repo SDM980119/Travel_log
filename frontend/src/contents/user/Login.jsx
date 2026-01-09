@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { login } from '../../API/auth';
-import './Login.css'
+import './user.css'
 
 
 const Login = () => {

@@ -55,7 +55,7 @@ function App() {
         <Route path="/Places/detail/:id" element={<PlaceDetailPage />} />
 
         <Route path="/review" element={<ReviewListPage />} />
-        <Route path="/review/detail" element={<ReviewDetailPage />} />
+        {/* <Route path="/review/detail" element={<ReviewDetailPage />} /> */}
         <Route path="/review/write" element={<ReviewWritePage />} />
         <Route path="/review/:id" element={<ReviewDetailPage />} />
 

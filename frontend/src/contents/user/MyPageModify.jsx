@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "./MyPageModify.css"
+import "./user.css"
 import { mypageDelete, mypageMd, mypageUpdate } from '../../API/user'
 import { Link, useNavigate } from 'react-router-dom'
 
