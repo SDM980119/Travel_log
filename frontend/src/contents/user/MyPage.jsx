@@ -144,8 +144,6 @@ const MyPage = () => {
                         {/* 이미지 영역 */}
                         <img src="/images/temp/temp2.png" alt="" />
                       </div>
-                      <WishToggleButton className="mypage-card2-wish-icon" />
-                      <span className="mypage-card2-title-en">Gwangju</span>
                     </div>
                     <div className="mypage-card2-text-wrap">
                       <p className="mypage-card2-title">

@@ -122,43 +122,6 @@ const Header = () => {
                                     )}
                                 </ul>
                             </div>
-
-                            <Link to="/wishlist" className="header__util wishlist" aria-label="찜 목록">
-                                <img src="/images/common/icon_wish.png" alt="" />
-                            </Link>
-
-                            {/* ✅ 검색 (드롭다운/패널 방식) */}
-                            <div
-                                ref={searchRef}
-                                className={`search-area ${openMenu === 'search' ? 'is-open' : ''}`}
-                            >
-                                <button
-                                type="button"
-                                className="header__util search"
-                                aria-label="검색 열기"
-                                aria-haspopup="true"
-                                aria-expanded={openMenu === 'search'}
-                                onClick={() => toggleMenu('search')}
-                                >
-                                    <img src="/images/common/icon_search.png" alt="" />
-                                </button>
-
-                                <div className="search__form-wrap">
-                                    <form
-                                        className='search__form-inner'
-                                        onSubmit = {(e) => {
-                                            e.preventDefault();
-                                            // navigate(`/search?q=${keyword}`)
-                                        }}
-                                    >
-                                        <input type="text" placeholder='검색어를 입력해주세요' />
-                                        <button type='submit'>
-                                            <img src="/images/common/icon_search.png" alt="" />
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-
                             <div
                                 ref={mobileMenuRef}
                                 className={`header__util-hover mobile__menu ${openMenu === 'mobileMenu' ? 'is-open' : ''}`}

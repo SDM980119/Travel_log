@@ -145,3 +145,14 @@ def mypage_delete():
     db.session.commit()
 
     return jsonify({"message": "회원 탈퇴 완료"})
+
+@bp.route("/mypage", methods=["GET"])
+@jwt_required()
+def mypage_review():
+    user = User.query.get(get_jwt_identity())
+
+    if not user: return jsonify({"message":"회원이 아닙니다."})
+
+    
+
+    return jsonify({})
