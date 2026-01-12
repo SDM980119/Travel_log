@@ -33,5 +33,5 @@ def create_app():
     app.register_blueprint(review.bp, url_prefix='/api')
     app.register_blueprint(wishlist.bp, url_prefix='/api')
     app.register_blueprint(like.bp, url_prefix='/api')
-    # app.register_blueprint(chatbot_views.bp, url_prefix='/api')
+    app.register_blueprint(chatbot_views.bp, url_prefix='/api')
     return app

@@ -18,6 +18,7 @@ import SignUp from './contents/user/SignUp'
 import Login from './contents/user/Login'
 import MyPage from './contents/user/MyPage'
 import TopButton from './components/common/TopButton'
+import ChatFabButton from './components/common/ChatButton'
 import Footer from './components/common/Footer'
 import ScrollHandler from './components/common/ScrollHandler'
 import MyPageModify from './contents/user/MyPageModify'
@@ -72,6 +73,7 @@ function App() {
       </Routes>
 
       <TopButton />
+      <ChatFabButton/>
       <Footer />
     </div>
   )
