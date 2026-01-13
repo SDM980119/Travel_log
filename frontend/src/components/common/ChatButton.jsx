@@ -5,7 +5,12 @@ const makeId = () => `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 const STORAGE_KEY = "travellog_chat_messages_v1";
 
 export default function ChatFabButton() {
+const TOP_SHOW_Y = 300;
+
+const ChatFabButton = () => {
   const [open, setOpen] = useState(false);
+  const [hasTopBtn, setHasTopBtn] = useState(false);
+
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -27,6 +32,13 @@ export default function ChatFabButton() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
     } catch (_) {}
   }, [messages]);
+  // scroll event
+  useEffect(() => {
+    const onScroll = () => setHasTopBtn(window.scrollY > TOP_SHOW_Y);
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // 열릴 때 포커스
   useEffect(() => {
@@ -125,8 +137,8 @@ export default function ChatFabButton() {
     <>
       <button
         id="chat-fab"
-        className="chat-fab"
-        aria-label="chat"
+        className={`chat-fab ${hasTopBtn ? 'with-top' : 'no-top'}`}
+        aria-label="help"
         type="button"
         onClick={() => setOpen((v) => !v)}
       >
@@ -140,7 +152,7 @@ export default function ChatFabButton() {
       />
 
       <div
-        className={`chatbot-panel ${open ? "open" : ""}`}
+        className={`chatbot-panel ${open ? "open" : ""} ${hasTopBtn ? 'with-top' : 'no-top'}`}
         ref={panelRef}
         aria-hidden={!open}
       >
