@@ -1,0 +1,4 @@
+node_modules
+build  // 기존에 build한 폴더는 제외
+dist
+.git

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { travelLogwWrite } from "../../API/mytravellog";
 import { mypage } from "../../API/user";
 
@@ -8,6 +8,23 @@ const TravelLogWritePage = () => {
   const [images, setImages] = useState([]);
   const [user, setUser] = useState(null)
   const nav = useNavigate()
+  const location = useLocation();
+  
+
+
+    useEffect(() => {
+      const token = localStorage.getItem("access_token");
+  
+      if (!token) {
+        nav("/login", {
+          state: {
+            message: "로그인이 필요한 서비스입니다.",
+            from: location.pathname,
+          },
+          replace: true,
+        });
+      }
+    }, []);
 
   useEffect(() => {
     mypage()

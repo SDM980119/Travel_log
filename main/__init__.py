@@ -27,7 +27,7 @@ def create_app():
     migrate.init_app(app, db)
     jwt.init_app(app)
     ma.init_app(app)
-    CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+    CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": ["http://localhost","http://localhost:3000","http://localhost:80"]}})
 
     # 블루프린트
     from .views import main_views, auth_views, place_views, user_views, review, wishlist,chatbot_views,like,mytravellog,comment

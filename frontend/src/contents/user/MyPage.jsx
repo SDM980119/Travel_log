@@ -262,11 +262,6 @@ const MyPage = () => {
           )}
 
           <div className="pagination">
-            <button>&lt;&lt;</button>
-            <button>&lt;</button>
-            <button className="current">1</button>
-            <button>&gt;</button>
-            <button>&gt;&gt;</button>
           </div>
         </section>
       </div>

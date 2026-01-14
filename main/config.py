@@ -12,5 +12,6 @@ JWT_TOKEN_LOCATION = ["headers"]
 JWT_HEADER_NAME = "Authorization"
 JWT_HEADER_TYPE = "Bearer"
 
-JWT_ACCESS_TOKEN_EXPIRES = False  # (테스트 중엔 만료 꺼두기)
-# JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
+# (테스트 중엔 만료 꺼두기)
+# JWT_ACCESS_TOKEN_EXPIRES = False
+JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)

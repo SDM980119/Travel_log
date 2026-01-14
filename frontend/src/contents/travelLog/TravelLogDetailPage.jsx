@@ -140,19 +140,8 @@ const ReviewDetailPage = () => {
                                     onToggle={() => handleLike()} />
                             </p>
                         </div>
-                        {/* <img
-              src={
-                isWished
-                  ? '/images/review/icon-wish-active.png'
-                  : '/images/review/icon-wish.png'
-              }
-              alt="찜"
-              onClick={() => setIsWished((prev) => !prev)}
-              style={{ cursor: 'pointer' }}
-            /> */}
                     </div>
                 </div>
-
                 <div className="board__content-wrap">
                     <div className="board__content">
                         <p>
@@ -200,18 +189,19 @@ const ReviewDetailPage = () => {
                                 </div>
                             ))) : (<p className='no-result'>등록된 리뷰가 없습니다.</p>)}
                         {/* end review list */}
-                        <div className="board__review-form">
-                            <form onSubmit={handleSubmit}>
-                                <div className="img-wrap">
-                                    <img src={`${IMAGE_BASE_URL}static/${user?.user_img}`} />
-                                </div>
-                                <input type="text" value={commentText}
-                                    onChange={(e) => setCommentText(e.target.value)}
-                                    placeholder="댓글을 작성해주세요" />
-                                <button type="submit">등록</button>
-                            </form>
-                        </div>
-
+                        {user && (
+                            <div className="board__review-form">
+                                <form onSubmit={handleSubmit}>
+                                    <div className="img-wrap">
+                                        <img src={`${IMAGE_BASE_URL}static/${user?.user_img}`} />
+                                    </div>
+                                    <input type="text" value={commentText}
+                                        onChange={(e) => setCommentText(e.target.value)}
+                                        placeholder="댓글을 작성해주세요" />
+                                    <button type="submit">등록</button>
+                                </form>
+                            </div>
+                        )}
                         <div className="btn-wrap">
                             <Link to='/travelLog'> <button className="btn-list">목록</button></Link>
                         </div>

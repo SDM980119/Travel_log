@@ -217,7 +217,7 @@ const Home = () => {
                                 ))}
                             </div>
 
-                            <Link to='/places' className='btn-more type2'>
+                            <Link to='/review' className='btn-more type2'>
                                 리뷰 보러가기
                             </Link>
                         </div>
