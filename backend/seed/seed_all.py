@@ -1,6 +1,6 @@
 import json
-from main import create_app, db
-from main.models import Places, Review, MyTravelLog, Comment
+from backend import create_app, db
+from backend.models import Places, Review, MyTravelLog, Comment
 
 app = create_app()
 app.app_context().push()
@@ -18,7 +18,7 @@ def seed_all():
     db.session.commit()
 
     # 1. Places
-    places_data = load_json("main/seed/places.json")
+    places_data = load_json("backend/seed/places.json")
     places = []
     for item in places_data:
         item["image_urls"] = json.dumps(item["image_urls"], ensure_ascii=False)
@@ -28,7 +28,7 @@ def seed_all():
     print("✅ Places 완료")
 
     # 2. Reviews
-    reviews_data = load_json("main/seed/reviews.json")
+    reviews_data = load_json("backend/seed/reviews.json")
     reviews = []
     for item in reviews_data:
         item["review_image"] = json.dumps(item["review_image"], ensure_ascii=False)
@@ -38,7 +38,7 @@ def seed_all():
     print("✅ Reviews 완료")
 
     # 3. MyTravelLog
-    logs_data = load_json("main/seed/my_travel_logs.json")
+    logs_data = load_json("backend/seed/my_travel_logs.json")
     logs = []
     for item in logs_data:
         item["image"] = json.dumps(item["image"], ensure_ascii=False)
@@ -48,8 +48,8 @@ def seed_all():
     print("✅ TravelLogs 완료")
 
     # 4. Comments (리뷰 + 여행로그)
-    review_comments = load_json("main/seed/comments.json")
-    travel_comments = load_json("main/seed/travel_log_comments.json")
+    review_comments = load_json("backend/seed/comments.json")
+    travel_comments = load_json("backend/seed/travel_log_comments.json")
 
     comments = []
     for item in review_comments + travel_comments:
@@ -64,4 +64,4 @@ def seed_all():
 if __name__ == "__main__":
     seed_all()
 
-# python -m main.seed.seed_all
+# python -m backend.seed.seed_all

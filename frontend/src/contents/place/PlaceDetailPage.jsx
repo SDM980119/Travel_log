@@ -13,6 +13,8 @@ const PlaceDetailPage = () => {
     const [wished, setWished] = useState(false)
     const [rwished, setRwished] = useState({})
     const navigate = useNavigate();
+    const getToken = () => localStorage.getItem("access_token");
+    const logins = () => !!getToken();
 
     const IMAGE_BASE_URL = "http://localhost:5000/"
 
@@ -27,11 +29,19 @@ const PlaceDetailPage = () => {
 
     useEffect(() => {
         if (!place?.id) return;
+
+        if (!logins()) {
+            setWished(false);
+            return;
+        }
+
         checkWishlist(place.id)
-            .then(res =>
-                setWished(res.data.wished)
-            )
-            .catch(err => {
+            .then((res) => setWished(!!res.data.wished))
+            .catch((err) => {
+                if (err?.response?.status === 401) {
+                    setWished(false);
+                    return;
+                }
                 console.error("checkWishlist 실패", err);
             });
     }, [place?.id]);
@@ -51,17 +61,26 @@ const PlaceDetailPage = () => {
             return;
         }
 
+        if (!logins()) {
+            const next = {};
+            recommended.forEach((item) => (next[item.id] = false));
+            setRwished(next);
+            return;
+        }
+
         Promise.all(
             recommended.map((item) =>
                 checkWishlist(item.id)
                     .then((res) => ({ id: item.id, wished: !!res.data.wished }))
-                    .catch(() => ({ id: item.id, wished: false }))
+                    .catch((err) => {
+                        if (err?.response?.status === 401) return ({ id: item.id, wished: false });
+                        console.error("rec checkWishlist 실패", item.id, err);
+                        return ({ id: item.id, wished: false });
+                    })
             )
         ).then((results) => {
             const next = {};
-            results.forEach((r) => {
-                next[r.id] = r.wished;
-            });
+            results.forEach((r) => (next[r.id] = r.wished));
             setRwished(next);
         });
     }, [recommended]);
@@ -81,19 +100,37 @@ const PlaceDetailPage = () => {
     const handleWishToggle = () => {
         if (!place?.id) return;
 
+        if (!logins()) {
+            alert("로그인이 필요합니다!")
+            navigate("/login");
+
+            return;
+        }
+
         toggleWishlist(place.id)
-            .then((res) => setWished(res.data.wished))
-            .catch(console.error);
+            .then((res) => setWished(!!res.data.wished))
+            .catch((err) => {
+                if (err?.response?.status === 401) return; // 조용히 무시
+                console.error(err);
+            });
     };
 
     const handleRecWishToggle = (placeId) => {
+        if (!logins()) {
+            alert("로그인이 필요합니다.");
+            navigate("/login");
+            return;
+        }
+
         toggleWishlist(placeId)
             .then((res) => {
-                setRwished((prev) => ({ ...prev, [placeId]: res.data.wished }));
+                setRwished((prev) => ({ ...prev, [placeId]: !!res.data.wished }));
             })
-            .catch(console.error);
+            .catch((err) => {
+                if (err?.response?.status === 401) return;
+                console.error(err);
+            });
     };
-
     if (!place) return <div></div>
     const map = `https://www.google.com/maps?q=${place.latitude},${place.longitude}&z=16&output=embed`;
 

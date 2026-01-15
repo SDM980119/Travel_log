@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 9b3d1535687c
+Revision ID: 0681605a94ad
 Revises: 
-Create Date: 2026-01-11 00:28:42.743638
+Create Date: 2026-01-15 09:52:03.932632
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9b3d1535687c'
+revision = '0681605a94ad'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -58,6 +58,16 @@ def upgrade():
     sa.UniqueConstraint('userid'),
     sa.UniqueConstraint('username')
     )
+    op.create_table('like',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('target_type', sa.String(length=20), nullable=False),
+    sa.Column('target_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('user_id', 'target_type', 'target_id', name='uix_user_target_like')
+    )
     op.create_table('my_travel_log',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('title', sa.String(length=120), nullable=False),
@@ -79,8 +89,6 @@ def upgrade():
     sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
     sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.Column('place_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['place_id'], ['places.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -98,6 +106,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('content', sa.Text(), nullable=False),
     sa.Column('like_count', sa.Integer(), nullable=False),
+    sa.Column('target_type', sa.String(length=20), nullable=False),
+    sa.Column('target_id', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
     sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -117,6 +127,7 @@ def downgrade():
     op.drop_table('wishlist')
     op.drop_table('review')
     op.drop_table('my_travel_log')
+    op.drop_table('like')
     op.drop_table('user')
     op.drop_table('places')
     # ### end Alembic commands ###

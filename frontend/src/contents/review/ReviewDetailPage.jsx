@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import WishToggleButton from '../../components/common/WishToggleButton';
 import { getReviewDetail } from '../../API/review';
 import { toggleLike } from '../../API/like';
@@ -7,7 +7,6 @@ import { createComment, getComments } from '../../API/comment';
 import { mypage } from '../../API/user';
 
 const ReviewDetailPage = () => {
-  const navigate = useNavigate();
   const { id } = useParams()
   const [review, setReview] = useState(null)
   const [liked, setLiked] = useState(false);
@@ -95,15 +94,6 @@ const ReviewDetailPage = () => {
           ...prev,
           like_count: res.data.like_count
         }));
-      })
-      .catch(err => console.error(err));
-  };
-
-  const fetchComments = () => {
-    getComments(id)
-      .then(res => {
-        if (Array.isArray(res.data)) setComments(res.data);
-        else setComments([]);
       })
       .catch(err => console.error(err));
   };
